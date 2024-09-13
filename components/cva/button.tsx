@@ -1,41 +1,39 @@
 import { cva, VariantProps } from "class-variance-authority";
-import { ComponentProps } from "react";
+import { ComponentProps, RefObject } from "react";
 import { twMerge } from "tailwind-merge";
 
-const buttonVariants = cva(["transition-colors", "rounded-md"], {
+const buttonVariants = cva(["transition-colors", "rounded-[4px]"], {
   variants: {
     variant: {
       default: [
         "hover:bg-color-orange-hover",
         "bg-color-orange",
         "text-white",
+        "justify-center",
         "flex-shrink-0",
       ],
       dropdown: [
         "hover:bg-color-hover",
         "flex",
         "flex-shrink-0",
-        "gap-2",
+        "gap-4",
         "justify-between",
         "w-auto",
-        "outline",
-        "outline-1",
-        "outline-gray-300",
+        "border",
         "items-center",
       ],
       picker: [
         "hover:bg-color-hover",
         "flex",
         "flex-shrink-0",
-        "gap-2",
+        "gap-4",
         "w-auto",
         "justify-between",
-        "outline",
-        "outline-1",
-        "outline-gray-300",
+        "border",
         "items-center",
       ],
       icon: ["hover:bg-color-hover"],
+      button: ["disabled:bg-color-hover bg-color-orange hover:bg-color-hover"],
     },
     size: {
       default: ["px-4", "py-2"],

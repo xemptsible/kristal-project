@@ -1,6 +1,6 @@
 export function TrackerComponent() {
   return (
-    <table className="table-auto border-2 my-2">
+    <table className="table-auto my-2">
       <thead>
         <tr>
           <th className="border">Tên</th>
