@@ -2,10 +2,10 @@
 
 import { ChevronDown } from "lucide-react";
 import { Button } from "./cva/button";
-import { Key, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { IDropdownProps, IDropdownItem } from "@/assets/interfaces";
+
 import handleOutsideClick from "./click-handler";
-import { IDropdownProps, IDropdownItem } from "@/assets/data";
-import { getDropdownIndexContext } from "@/app/context/app-context";
 
 export function DropdownMenu({
   id,
@@ -16,7 +16,7 @@ export function DropdownMenu({
 }: IDropdownProps) {
   const [isOpen, toggleDropdown] = useState<Boolean>(false);
   const [indexItem, setItem] = useState<IDropdownItem | undefined>(
-    selectedId ? data?.find((item) => item.id === selectedId) : undefined
+    selectedId ? data?.find((item: any) => item.id === selectedId) : undefined
   );
 
   const handleChange = (item: IDropdownItem) => {
@@ -27,7 +27,7 @@ export function DropdownMenu({
 
   useEffect(() => {
     if (selectedId && data) {
-      const newSelection = data.find((item) => item.id === selectedId);
+      const newSelection = data.find((item: any) => item.id === selectedId);
       newSelection && setItem(newSelection);
     } else {
       setItem(undefined);
@@ -47,7 +47,7 @@ export function DropdownMenu({
     >
       <Button
         id={id}
-        variant={"dropdown"}
+        variant={"action"}
         className="flex flex-grow gap-4"
         type="button"
         onClick={() => toggleDropdown(!isOpen)}
@@ -59,8 +59,8 @@ export function DropdownMenu({
       </Button>
       {isOpen ? (
         <div>
-          <ul className="border absolute w-full bg-background rounded-[4px]">
-            {data.map((item) => (
+          <ul className="border absolute w-full rounded-[4px] z-10 bg-background">
+            {data.map((item: any) => (
               <DropdownItem item={item} handler={handleChange} key={item.id} />
             ))}
           </ul>

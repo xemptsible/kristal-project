@@ -1,24 +1,35 @@
-import { Calendar, ChartLine, Table } from "lucide-react";
+import { useState } from "react";
 import { Button } from "../cva/button";
 import { DropdownMenu } from "../dropdown";
 import {
+  getDateRangeContext,
   getDropdownIndexContext,
   getIndexContext,
 } from "@/app/context/app-context";
-import { useState } from "react";
+
+import "react-datepicker/dist/react-datepicker.css";
+import { DateRangerPicker } from "../date-range-picker";
+import { Toggles } from "../toggle";
 
 export function HeaderComponent({ data }: any) {
   const { isChart, toggleView } = getIndexContext();
   const { setDropdownItem } = getDropdownIndexContext();
+  const { setDateRange } = getDateRangeContext();
 
-  const [index, setSelection] = useState("");
+  const [index, setSelection] = useState("Tất cả danh mục");
+  const [ranges, setRange] = useState<[Date | null, Date | null]>([null, null]);
 
-  function handleFilters(newItem: string) {
-    setSelection(newItem);
+  function handleNewIndex(newIndex: string) {
+    setSelection((currentIndex) => (currentIndex = newIndex));
+  }
+
+  function handleNewRange(newRange: [Date | null, Date | null]) {
+    setRange((currentRange) => (currentRange = newRange));
   }
 
   function confirm() {
     setDropdownItem(index);
+    setDateRange(ranges);
   }
 
   return (
@@ -28,61 +39,16 @@ export function HeaderComponent({ data }: any) {
           id={"index"}
           title={"Tất cả danh mục"}
           data={data}
-          onSelect={handleFilters}
+          onSelect={handleNewIndex}
         />
-        <DateFilter />
-        <Button onClick={() => confirm()}>
+        <DateRangerPicker getDateRange={handleNewRange} />
+        <Button onClick={confirm}>
           <p className="overflow-hidden overflow-ellipsis">Tra cứu</p>
         </Button>
       </div>
       <div className="flex flex-row self-end ml-auto">
-        <Toggles isChart={isChart} toggleView={toggleView} />
+        <Toggles isChart={isChart} onClick={toggleView} />
       </div>
     </nav>
-  );
-}
-
-export function DateFilter() {
-  return (
-    <>
-      <Button
-        variant={"dropdown"}
-        className="flex flex-grow md:flex-grow-0 gap-4"
-      >
-        <p className="overflow-hidden overflow-ellipsis">
-          10/08/2020 - 01/08/2020
-        </p>
-        <Calendar />
-      </Button>
-    </>
-  );
-}
-
-export function Toggles({
-  isChart,
-  toggleView,
-}: {
-  isChart: boolean;
-  toggleView: () => void;
-}) {
-  return (
-    <>
-      <Button
-        variant={"icon"}
-        size={"icon"}
-        className="flex self-end"
-        onClick={toggleView}
-      >
-        <ChartLine color={isChart ? "hsl(26, 81%, 52%)" : "currentColor"} />
-      </Button>
-      <Button
-        variant={"icon"}
-        size={"icon"}
-        className="flex self-end"
-        onClick={toggleView}
-      >
-        <Table color={!isChart ? "hsl(26, 81%, 52%)" : "currentColor"} />
-      </Button>
-    </>
   );
 }

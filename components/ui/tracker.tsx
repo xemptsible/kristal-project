@@ -3,30 +3,62 @@ export function TrackerComponent() {
     <table className="table-auto my-2">
       <thead>
         <tr>
-          <th className="border">Tên</th>
-          <th className="border">Ngày bắt đầu (day)</th>
-          <th className="border">Ngày kết thúc (day)</th>
-          <th className="border">Tăng/Giảm (%)</th>
+          <th className="border border-color-secondary-alt bg-color-secondary text-white py-2">
+            Tên
+          </th>
+          <th className="border border-color-secondary-alt bg-color-secondary text-white py-2">
+            Ngày bắt đầu (day)
+          </th>
+          <th className="border border-color-secondary-alt bg-color-secondary text-white py-2">
+            Ngày kết thúc (day)
+          </th>
+          <th className="border border-color-secondary-alt bg-color-secondary text-white py-2">
+            Tăng/Giảm (%)
+          </th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <th className="border text-center">Danh mục A</th>
-          <td className="border text-center">test</td>
-          <td className="border text-center">test</td>
-          <td className="border text-center">test</td>
+          <th className="border border-color-secondary-alt py-2 text-center text-color-main bg-color-tertiary">
+            Danh mục A
+          </th>
+          <td className="border border-color-secondary-alt py-2 text-center text-color-main">
+            test
+          </td>
+          <td className="border border-color-secondary-alt py-2 text-center text-color-main">
+            test
+          </td>
+          <td className="border border-color-secondary-alt py-2 text-center text-color-main">
+            test
+          </td>
         </tr>
         <tr>
-          <th className="border text-center">Danh mục B</th>
-          <td className="border text-center">test</td>
-          <td className="border text-center">test</td>
-          <td className="border text-center">test</td>
+          <th className="border border-color-secondary-alt py-2 text-center text-color-main bg-color-tertiary">
+            Danh mục B
+          </th>
+          <td className="border border-color-secondary-alt py-2 text-center text-color-main">
+            test
+          </td>
+          <td className="border border-color-secondary-alt py-2 text-center text-color-main">
+            test
+          </td>
+          <td className="border border-color-secondary-alt py-2 text-center text-color-main">
+            test
+          </td>
         </tr>
         <tr>
-          <th className="border text-center">Danh mục C</th>
-          <td className="border text-center">test</td>
-          <td className="border text-center">test</td>
-          <td className="border text-center">test</td>
+          <th className="border border-color-secondary-alt py-2 text-center text-color-main bg-color-tertiary">
+            Danh mục C
+          </th>
+          <td className="border border-color-secondary-alt py-2 text-center text-color-main">
+            test
+          </td>
+          <td className="border border-color-secondary-alt py-2 text-center text-color-main">
+            test
+          </td>
+          <td className="border border-color-secondary-alt py-2 text-center text-color-main">
+            test
+          </td>
         </tr>
       </tbody>
     </table>

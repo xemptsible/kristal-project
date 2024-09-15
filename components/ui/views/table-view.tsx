@@ -1,147 +1,203 @@
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "../../cva/button";
-import { useState } from "react";
-import { getDropdownIndexContext } from "@/app/context/app-context";
+import { useMemo, useState } from "react";
+import {
+  getDateRangeContext,
+  getDropdownIndexContext,
+} from "@/app/context/app-context";
+import { Pagination } from "@/components/pagination";
+import { IIndexData } from "@/assets/interfaces";
+import { dateDiffInDays } from "@/app/helpers/date-diff";
+
+import mock_data from "@/assets/MOCK_DATA.json";
 
 export function TableViewComponent() {
-  const { selectedItem } = getDropdownIndexContext();
+  const { dateRange } = getDateRangeContext();
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const [currentPage, setPage] = useState(0);
+  let defaultPageSize = 5;
+
+  const currentTableData = useMemo(() => {
+    const first = (currentPage - 1) * defaultPageSize;
+    const last = first + defaultPageSize;
+
+    let intialData = mock_data.slice(first, last);
+
+    let filteredData = intialData.filter((_, i) => {
+      return (
+        new Date(intialData[i].date).getTime() >= dateRange[0]!.getTime() &&
+        new Date(intialData[i].date).getTime() <= dateRange[1]!.getTime()
+      );
+    });
+
+    return filteredData;
+  }, [currentPage, dateRange]);
 
   return (
     <>
-      <TableComponent selectedItem={selectedItem} />
-      <Pagination />
+      <Table data={currentTableData} />
+      <Pagination
+        currentPage={currentPage}
+        totalCount={dateDiffInDays(dateRange[0]!, dateRange[1]!)}
+        siblingCount={1}
+        pageSize={defaultPageSize}
+        onPageChange={(page: number) => setCurrentPage(page)}
+      />
     </>
   );
 }
 
-function TableComponent({ selectedItem }: { selectedItem: string }) {
+function Table({ data }: { data: IIndexData[] }) {
+  const { selectedItem } = getDropdownIndexContext();
   return (
     <table className="table-auto my-2">
       {selectedItem == "Tất cả danh mục" ? (
-        <AllIndexes />
+        <AllIndexes data={data} />
       ) : (
-        <SelectedIndex indexName={selectedItem} />
+        <SelectedIndex data={data} />
       )}
     </table>
   );
 }
 
-function Pagination() {
-  return (
-    <div className="flex flex-grow justify-center gap-1">
-      <Button disabled={true} variant={"button"} size={"icon"}>
-        <ChevronLeft />
-      </Button>
-      <Button
-        variant={"icon"}
-        size={"icon"}
-        className="px-3.5 text-color-orange"
-      >
-        1
-      </Button>
-      <Button variant={"icon"} size={"icon"} className="px-3.5">
-        2
-      </Button>
-      <Button variant={"icon"} size={"icon"} className="px-3.5">
-        3
-      </Button>
-      <Button variant={"icon"} size={"icon"} className="px-3.5">
-        4
-      </Button>
-      <Button variant={"icon"} size={"icon"} className="px-3.5">
-        5
-      </Button>
-      <Button variant={"button"} size={"icon"}>
-        <ChevronRight />
-      </Button>
-    </div>
-  );
-}
-
-function AllIndexes() {
+function AllIndexes({ data }: { data: IIndexData[] }) {
   return (
     <>
       <thead>
         <tr>
-          <th className="border">Ngày</th>
-          <th className="border">Danh mục A</th>
-          <th className="border">Danh mục B</th>
-          <th className="border">Danh mục C</th>
+          <th className="border border-color-secondary-alt bg-color-secondary text-white py-2">
+            Ngày
+          </th>
+          <th className="border border-color-secondary-alt bg-color-secondary text-white py-2">
+            Danh mục A
+          </th>
+          <th className="border border-color-secondary-alt bg-color-secondary text-white py-2">
+            Danh mục B
+          </th>
+          <th className="border border-color-secondary-alt bg-color-secondary text-white py-2">
+            Danh mục C
+          </th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td className="border text-center">test</td>
-          <td className="border text-center">test</td>
-          <td className="border text-center">test</td>
-          <td className="border text-center">test</td>
-        </tr>
-        <tr>
-          <td className="border text-center">test</td>
-          <td className="border text-center">test</td>
-          <td className="border text-center">test</td>
-          <td className="border text-center">test</td>
-        </tr>
-        <tr>
-          <td className="border text-center">test</td>
-          <td className="border text-center">test</td>
-          <td className="border text-center">test</td>
-          <td className="border text-center">test</td>
-        </tr>
-        <tr>
-          <td className="border text-center">test</td>
-          <td className="border text-center">test</td>
-          <td className="border text-center">test</td>
-          <td className="border text-center">test</td>
-        </tr>
-        <tr>
-          <td className="border text-center">test</td>
-          <td className="border text-center">test</td>
-          <td className="border text-center">test</td>
-          <td className="border text-center">test</td>
-        </tr>
+        {data.map((item: any) => {
+          return (
+            <tr key={item.id}>
+              <td
+                key={item.date}
+                className="border py-2 border-color-secondary-alt text-center"
+              >
+                {item.date}
+              </td>
+              <td
+                key={item.indexA}
+                className="border py-2 border-color-secondary-alt text-center"
+              >
+                {item.indexA}
+              </td>
+              <td
+                key={item.indexB}
+                className="border py-2 border-color-secondary-alt text-center"
+              >
+                {item.indexB}
+              </td>
+              <td
+                key={item.indexC}
+                className="border py-2 border-color-secondary-alt text-center"
+              >
+                {item.indexC}
+              </td>
+            </tr>
+          );
+        })}
       </tbody>
     </>
   );
 }
 
-function SelectedIndex({ indexName }: { indexName: string }) {
+function SelectedIndex({ data }: { data: IIndexData[] }) {
+  const { selectedItem } = getDropdownIndexContext();
+
+  function indexHandler(selectedItem: string) {
+    let node: any;
+
+    switch (selectedItem) {
+      case "Danh mục A":
+        node = data.map((item: any) => {
+          return (
+            <tr key={item.id}>
+              <td
+                key={item.date}
+                className="border py-2 border-color-secondary-alt text-center"
+              >
+                {item.date}
+              </td>
+              <td
+                key={item.indexA}
+                className="border py-2 border-color-secondary-alt text-center"
+              >
+                {item.indexA}
+              </td>
+            </tr>
+          );
+        });
+        break;
+      case "Danh mục B":
+        node = data.map((item: any) => {
+          return (
+            <tr key={item.id}>
+              <td
+                key={item.date}
+                className="border py-2 border-color-secondary-alt text-center"
+              >
+                {item.date}
+              </td>
+              <td
+                key={item.indexB}
+                className="border py-2 border-color-secondary-alt text-center"
+              >
+                {item.indexB}
+              </td>
+            </tr>
+          );
+        });
+        break;
+      case "Danh mục C":
+        node = data.map((item: any) => {
+          return (
+            <tr key={item.id}>
+              <td
+                key={item.date}
+                className="border py-2 border-color-secondary-alt text-center"
+              >
+                {item.date}
+              </td>
+              <td
+                key={item.indexC}
+                className="border py-2 border-color-secondary-alt text-center"
+              >
+                {item.indexC}
+              </td>
+            </tr>
+          );
+        });
+        break;
+    }
+
+    return node;
+  }
+
   return (
     <>
       <thead>
         <tr>
-          <th className="border text-center">Ngày</th>
-          <th className="border text-center">{indexName}</th>
+          <th className="border py-2 border-color-secondary-alt bg-color-secondary text-center">
+            Ngày
+          </th>
+          <th className="border py-2 border-color-secondary-alt bg-color-secondary text-center">
+            {selectedItem ?? "Error"}
+          </th>
         </tr>
       </thead>
-      <tbody>
-        <tr>
-          <td className="border text-center">test</td>
-          <td className="border text-center">test</td>
-        </tr>
-        <tr>
-          <td className="border text-center">test</td>
-          <td className="border text-center">test</td>
-        </tr>
-        <tr>
-          <td className="border text-center">test</td>
-          <td className="border text-center">test</td>
-        </tr>
-        <tr>
-          <td className="border text-center">test</td>
-          <td className="border text-center">test</td>
-        </tr>
-        <tr>
-          <td className="border text-center">test</td>
-          <td className="border text-center">test</td>
-        </tr>
-        <tr>
-          <td className="border text-center">test</td>
-          <td className="border text-center">test</td>
-        </tr>
-      </tbody>
+      <tbody>{indexHandler(selectedItem)}</tbody>
     </>
   );
 }

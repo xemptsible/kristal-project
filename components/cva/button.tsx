@@ -2,27 +2,18 @@ import { cva, VariantProps } from "class-variance-authority";
 import { ComponentProps, RefObject } from "react";
 import { twMerge } from "tailwind-merge";
 
-const buttonVariants = cva(["transition-colors", "rounded-[4px]"], {
+const buttonVariants = cva(["transition-colors", "rounded"], {
   variants: {
     variant: {
       default: [
         "hover:bg-color-orange-hover",
-        "bg-color-orange",
+        "bg-color-main",
         "text-white",
+        "hover:bg-color-main-alt",
         "justify-center",
         "flex-shrink-0",
       ],
-      dropdown: [
-        "hover:bg-color-hover",
-        "flex",
-        "flex-shrink-0",
-        "gap-4",
-        "justify-between",
-        "w-auto",
-        "border",
-        "items-center",
-      ],
-      picker: [
+      action: [
         "hover:bg-color-hover",
         "flex",
         "flex-shrink-0",
@@ -33,7 +24,7 @@ const buttonVariants = cva(["transition-colors", "rounded-[4px]"], {
         "items-center",
       ],
       icon: ["hover:bg-color-hover"],
-      button: ["disabled:bg-color-hover bg-color-orange hover:bg-color-hover"],
+      button: ["disabled:bg-color-disabled hover:bg-color-hover bg-color-main"],
     },
     size: {
       default: ["px-4", "py-2"],
@@ -41,7 +32,15 @@ const buttonVariants = cva(["transition-colors", "rounded-[4px]"], {
         "p-2",
         "w-auto",
         "flex",
-        "flex-shrink-0",
+        "basis-0",
+        "items-center",
+        "justify-center",
+      ],
+      pagination: [
+        "px-3.5",
+        "py-2",
+        "flew",
+        "basis-0",
         "items-center",
         "justify-center",
       ],

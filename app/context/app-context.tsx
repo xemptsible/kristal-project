@@ -1,27 +1,11 @@
-import { IDropdownItem } from "@/assets/data";
+import {
+  IViewContext,
+  IDropdownIndexContext,
+  IDateRangeContext,
+} from "@/assets/interfaces";
 import { createContext, useContext, useMemo, useState } from "react";
 
-interface IViewContext {
-  isChart: boolean;
-  toggleView: () => void;
-}
-
-interface IDropdownIndexContext {
-  selectedItem: string;
-  setDropdownItem: (item: string) => void;
-}
-
-interface IPagination {
-  totalCount: IDropdownItem[];
-  currentPage: number;
-  setPage: () => void;
-}
-
-interface IDateRangeContext {
-  dateStart: Date;
-  dateEnd: Date;
-  setDateRange: () => void;
-}
+import mock_data from "@/assets/MOCK_DATA.json";
 
 export const ViewContext = createContext<IViewContext | undefined>(undefined);
 
@@ -53,19 +37,45 @@ export function getDropdownIndexContext() {
   return context;
 }
 
+export function getDateRangeContext() {
+  let context = useContext(DateRangeContext);
+
+  if (context == undefined) {
+    throw Error("DateRangeContext must be used in the provider");
+  }
+
+  return context;
+}
+
 export function ApplicationContext({ children }: any) {
   const [isChart, toggle] = useState(false);
   const [selectedItem, set] = useState("Tất cả danh mục");
+  const [dateRange, setDate] = useState<[Date | null, Date | null]>([
+    new Date(mock_data[0].date),
+    new Date(mock_data[mock_data.length - 1].date),
+    // new Date(mock_data[2].date),
+    // null,
+    // null,
+  ]);
 
   function toggleView() {
     toggle((currentState) => (currentState = !isChart));
   }
 
   function setDropdownItem(item: string) {
-    console.log(item);
     set((currentItem) => (currentItem = item));
   }
 
+  function setDateRange(date: [Date | null, Date | null]) {
+    setDate((newDate) => (newDate = date));
+    console.log(date[0]);
+    console.log(date[1]);
+  }
+
+  const dateRangeValue = useMemo(
+    () => ({ dateRange, setDateRange }),
+    [dateRange]
+  );
   const viewValue = useMemo(() => ({ isChart, toggleView }), [isChart]);
   const dropdownValue = useMemo(
     () => ({ selectedItem, setDropdownItem }),
@@ -75,7 +85,9 @@ export function ApplicationContext({ children }: any) {
   return (
     <ViewContext.Provider value={viewValue}>
       <DropdownIndexContext.Provider value={dropdownValue}>
-        {children}
+        <DateRangeContext.Provider value={dateRangeValue}>
+          {children}
+        </DateRangeContext.Provider>
       </DropdownIndexContext.Provider>
     </ViewContext.Provider>
   );

@@ -12,11 +12,13 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
         color: {
-          orange: "var(--orange)",
-          mint: "var(--mint)",
-          "dark-green": "var(--dark-green)",
-          "orange-hover": "var(--orange-hover)",
+          main: "var(--main)",
+          "main-alt": "var(--main-alt)",
+          secondary: "var(--secondary)",
+          "secondary-alt": "var(--secondary-alt)",
+          tertiary: "var(--tertiary)",
           hover: "var(--hover)",
+          disabled: "var(--disabled)"
         },
       },
     },
