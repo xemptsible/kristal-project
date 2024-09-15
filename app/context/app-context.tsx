@@ -73,7 +73,7 @@ export function ApplicationContext({ children }: { children: ReactNode }) {
   );
   const viewValue = useMemo(
     () => ({ isChart, toggleView }),
-    [isChart, toggleView]
+    [isChart]
   );
   const dropdownValue = useMemo(
     () => ({ selectedItem, setDropdownItem }),

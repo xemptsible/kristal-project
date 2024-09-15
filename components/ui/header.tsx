@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { Button } from "../cva/button";
 import { DropdownMenu } from "../dropdown";
 import {
@@ -15,10 +15,13 @@ import "react-datepicker/dist/react-datepicker.css";
 export function HeaderComponent({ data }: { data: IDropdownItem[] }) {
   const { isChart, toggleView } = useViewContext();
   const { setDropdownItem } = useDropdownIndexContext();
-  const { setDateRange } = useDateRangeContext();
+  const { dateRange, setDateRange } = useDateRangeContext();
 
   const [index, setSelection] = useState("Tất cả danh mục");
-  const [ranges, setRange] = useState<[Date | null, Date | null]>([null, null]);
+  const [ranges, setRange] = useState<[Date | null, Date | null]>([
+    dateRange[0],
+    dateRange[1],
+  ]);
 
   function handleNewIndex(newIndex: string) {
     setSelection(newIndex);
@@ -28,10 +31,10 @@ export function HeaderComponent({ data }: { data: IDropdownItem[] }) {
     setRange(newRange);
   }
 
-  function confirm() {
+  const confirm = useMemo(() => {
     setDropdownItem(index);
     setDateRange(ranges);
-  }
+  }, [index, ranges]);
 
   return (
     <nav className="flex flex-wrap flex-col sm:flex-row justify-between gap-2 my-2">
@@ -43,12 +46,12 @@ export function HeaderComponent({ data }: { data: IDropdownItem[] }) {
           onSelect={handleNewIndex}
         />
         <DateRangerPicker getDateRange={handleNewRange} />
-        <Button onClick={confirm}>
+        <Button onClick={() => confirm}>
           <p className="overflow-hidden overflow-ellipsis">Tra cứu</p>
         </Button>
       </div>
       <div className="flex flex-row self-end ml-auto">
-        <Toggles isChart={isChart} onClick={toggleView} />
+        <Toggles isChart={isChart} onClick={() => toggleView()} />
       </div>
     </nav>
   );
