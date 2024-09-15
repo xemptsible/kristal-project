@@ -2,29 +2,30 @@ import { useState } from "react";
 import { Button } from "../cva/button";
 import { DropdownMenu } from "../dropdown";
 import {
-  getDateRangeContext,
-  getDropdownIndexContext,
-  getIndexContext,
+  useDateRangeContext,
+  useDropdownIndexContext,
+  useViewContext,
 } from "@/app/context/app-context";
-
-import "react-datepicker/dist/react-datepicker.css";
 import { DateRangerPicker } from "../date-range-picker";
 import { Toggles } from "../toggle";
+import { IDropdownItem } from "@/assets/interfaces";
 
-export function HeaderComponent({ data }: any) {
-  const { isChart, toggleView } = getIndexContext();
-  const { setDropdownItem } = getDropdownIndexContext();
-  const { setDateRange } = getDateRangeContext();
+import "react-datepicker/dist/react-datepicker.css";
+
+export function HeaderComponent({ data }: { data: IDropdownItem[] }) {
+  const { isChart, toggleView } = useViewContext();
+  const { setDropdownItem } = useDropdownIndexContext();
+  const { setDateRange } = useDateRangeContext();
 
   const [index, setSelection] = useState("Tất cả danh mục");
   const [ranges, setRange] = useState<[Date | null, Date | null]>([null, null]);
 
   function handleNewIndex(newIndex: string) {
-    setSelection((currentIndex) => (currentIndex = newIndex));
+    setSelection(newIndex);
   }
 
   function handleNewRange(newRange: [Date | null, Date | null]) {
-    setRange((currentRange) => (currentRange = newRange));
+    setRange(newRange);
   }
 
   function confirm() {

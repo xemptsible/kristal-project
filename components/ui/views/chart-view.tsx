@@ -1,6 +1,6 @@
-import { getDropdownIndexContext } from "@/app/context/app-context";
+import { useDropdownIndexContext } from "@/app/context/app-context";
 
 export function ChartViewComponent() {
-  const { selectedItem } = getDropdownIndexContext();
+  const { selectedItem } = useDropdownIndexContext();
   return <div>{selectedItem}</div>;
 }

@@ -1,5 +1,5 @@
 import { Calendar } from "lucide-react";
-import { useState, forwardRef, ForwardedRef } from "react";
+import { useState, forwardRef, ForwardedRef, ReactNode } from "react";
 import { Button } from "./cva/button";
 
 import DatePicker from "react-datepicker";
@@ -16,11 +16,15 @@ export function DateRangerPicker({
   ]);
   const [startDate, endDate] = dates;
 
-  const CustomDateInput = forwardRef(
-    (
-      { value, onClick, className }: any,
-      ref: ForwardedRef<HTMLButtonElement>
-    ) => (
+  const CustomDateInput = forwardRef(function DateInput(
+    {
+      value,
+      onClick,
+      className,
+    }: { value?: ReactNode | null; onClick?: () => void; className: string },
+    ref: ForwardedRef<HTMLButtonElement>
+  ) {
+    return (
       <Button
         ref={ref}
         className={className}
@@ -30,8 +34,8 @@ export function DateRangerPicker({
         {value}
         <Calendar />
       </Button>
-    )
-  );
+    );
+  });
 
   return (
     <DatePicker

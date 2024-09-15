@@ -1,7 +1,7 @@
-import { useMemo, useState } from "react";
+import { ReactNode, useMemo, useState } from "react";
 import {
-  getDateRangeContext,
-  getDropdownIndexContext,
+  useDateRangeContext,
+  useDropdownIndexContext,
 } from "@/app/context/app-context";
 import { Pagination } from "@/components/pagination";
 import { IIndexData } from "@/assets/interfaces";
@@ -10,18 +10,18 @@ import { dateDiffInDays } from "@/app/helpers/date-diff";
 import mock_data from "@/assets/MOCK_DATA.json";
 
 export function TableViewComponent() {
-  const { dateRange } = getDateRangeContext();
+  const { dateRange } = useDateRangeContext();
   const [currentPage, setCurrentPage] = useState(1);
 
-  let defaultPageSize = 5;
+  const defaultPageSize = 5;
 
   const currentTableData = useMemo(() => {
     const first = (currentPage - 1) * defaultPageSize;
     const last = first + defaultPageSize;
 
-    let intialData = mock_data.slice(first, last);
+    const intialData = mock_data.slice(first, last);
 
-    let filteredData = intialData.filter((_, i) => {
+    const filteredData = intialData.filter((_, i) => {
       return (
         new Date(intialData[i].date).getTime() >= dateRange[0]!.getTime() &&
         new Date(intialData[i].date).getTime() <= dateRange[1]!.getTime()
@@ -46,7 +46,7 @@ export function TableViewComponent() {
 }
 
 function Table({ data }: { data: IIndexData[] }) {
-  const { selectedItem } = getDropdownIndexContext();
+  const { selectedItem } = useDropdownIndexContext();
   return (
     <table className="table-auto my-2">
       {selectedItem == "Tất cả danh mục" ? (
@@ -78,7 +78,7 @@ function AllIndexes({ data }: { data: IIndexData[] }) {
         </tr>
       </thead>
       <tbody>
-        {data.map((item: any) => {
+        {data.map((item: IIndexData) => {
           return (
             <tr key={item.id}>
               <td
@@ -114,14 +114,14 @@ function AllIndexes({ data }: { data: IIndexData[] }) {
 }
 
 function SelectedIndex({ data }: { data: IIndexData[] }) {
-  const { selectedItem } = getDropdownIndexContext();
+  const { selectedItem } = useDropdownIndexContext();
 
   function indexHandler(selectedItem: string) {
-    let node: any;
+    let node: ReactNode;
 
     switch (selectedItem) {
       case "Danh mục A":
-        node = data.map((item: any) => {
+        node = data.map((item: IIndexData) => {
           return (
             <tr key={item.id}>
               <td
@@ -141,7 +141,7 @@ function SelectedIndex({ data }: { data: IIndexData[] }) {
         });
         break;
       case "Danh mục B":
-        node = data.map((item: any) => {
+        node = data.map((item: IIndexData) => {
           return (
             <tr key={item.id}>
               <td
@@ -161,7 +161,7 @@ function SelectedIndex({ data }: { data: IIndexData[] }) {
         });
         break;
       case "Danh mục C":
-        node = data.map((item: any) => {
+        node = data.map((item: IIndexData) => {
           return (
             <tr key={item.id}>
               <td

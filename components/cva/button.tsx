@@ -1,5 +1,5 @@
 import { cva, VariantProps } from "class-variance-authority";
-import { ComponentProps, RefObject } from "react";
+import { ComponentProps } from "react";
 import { twMerge } from "tailwind-merge";
 
 const buttonVariants = cva(["transition-colors", "rounded"], {

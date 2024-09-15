@@ -3,7 +3,7 @@ import {
   IDropdownIndexContext,
   IDateRangeContext,
 } from "@/assets/interfaces";
-import { createContext, useContext, useMemo, useState } from "react";
+import { createContext, ReactNode, useContext, useMemo, useState } from "react";
 
 import mock_data from "@/assets/MOCK_DATA.json";
 
@@ -17,8 +17,8 @@ export const DateRangeContext = createContext<IDateRangeContext | undefined>(
   undefined
 );
 
-export function getIndexContext() {
-  let context = useContext(ViewContext);
+export function useViewContext() {
+  const context = useContext(ViewContext);
 
   if (context == undefined) {
     throw Error("IndexContext must be used in the provider");
@@ -27,8 +27,8 @@ export function getIndexContext() {
   return context;
 }
 
-export function getDropdownIndexContext() {
-  let context = useContext(DropdownIndexContext);
+export function useDropdownIndexContext() {
+  const context = useContext(DropdownIndexContext);
 
   if (context == undefined) {
     throw Error("DropdownIndexContext must be used in the provider");
@@ -37,8 +37,8 @@ export function getDropdownIndexContext() {
   return context;
 }
 
-export function getDateRangeContext() {
-  let context = useContext(DateRangeContext);
+export function useDateRangeContext() {
+  const context = useContext(DateRangeContext);
 
   if (context == undefined) {
     throw Error("DateRangeContext must be used in the provider");
@@ -47,36 +47,34 @@ export function getDateRangeContext() {
   return context;
 }
 
-export function ApplicationContext({ children }: any) {
+export function ApplicationContext({ children }: { children: ReactNode }) {
   const [isChart, toggle] = useState(false);
   const [selectedItem, set] = useState("Tất cả danh mục");
   const [dateRange, setDate] = useState<[Date | null, Date | null]>([
     new Date(mock_data[0].date),
     new Date(mock_data[mock_data.length - 1].date),
-    // new Date(mock_data[2].date),
-    // null,
-    // null,
   ]);
 
   function toggleView() {
-    toggle((currentState) => (currentState = !isChart));
+    toggle(!isChart);
   }
 
   function setDropdownItem(item: string) {
-    set((currentItem) => (currentItem = item));
+    set(item);
   }
 
   function setDateRange(date: [Date | null, Date | null]) {
-    setDate((newDate) => (newDate = date));
-    console.log(date[0]);
-    console.log(date[1]);
+    setDate(date);
   }
 
   const dateRangeValue = useMemo(
     () => ({ dateRange, setDateRange }),
     [dateRange]
   );
-  const viewValue = useMemo(() => ({ isChart, toggleView }), [isChart]);
+  const viewValue = useMemo(
+    () => ({ isChart, toggleView }),
+    [isChart, toggleView]
+  );
   const dropdownValue = useMemo(
     () => ({ selectedItem, setDropdownItem }),
     [selectedItem]

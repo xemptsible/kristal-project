@@ -2,7 +2,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./cva/button";
 import { IPaginationProps, IPagniation } from "@/assets/interfaces";
 import { PaginationDots } from "@/assets/data";
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 
 export function Pagination({
   currentPage,
@@ -11,7 +11,7 @@ export function Pagination({
   siblingCount = 1,
   onPageChange,
 }: IPagniation) {
-  let paginationRange: (string | number)[] | undefined =
+  const paginationRange: (string | number)[] | undefined =
     PaginationLogic({
       currentPage,
       totalCount,
@@ -66,7 +66,7 @@ export function Pagination({
                 : "font-bold"
             }
             onClick={() => {
-              let number: number = pageNum as number;
+              const number: number = pageNum as number;
               onPageChange(number);
             }}
           >
@@ -99,7 +99,7 @@ function PaginationLogic({
     const totalPageCount = Math.ceil(totalCount / pageSize);
 
     const range = (start: number, end: number) => {
-      let length = end - start + 1;
+      const length = end - start + 1;
       return Array.from({ length }, (_, index: number) => index + start);
     };
 
@@ -123,15 +123,15 @@ function PaginationLogic({
     const hasRightSibling = rightSiblingIndex < totalPageCount - 2;
 
     if (!hasLeftSibling && hasRightSibling) {
-      let leftItemCount = defaultPageNumbers - 1;
-      let leftRange = range(1, leftItemCount);
+      const leftItemCount = defaultPageNumbers - 1;
+      const leftRange = range(1, leftItemCount);
 
       return [...leftRange, PaginationDots, totalPageCount];
     }
 
     if (hasLeftSibling && !hasRightSibling) {
-      let rightItemCount = defaultPageNumbers - 1;
-      let rightRange = range(
+      const rightItemCount = defaultPageNumbers - 1;
+      const rightRange = range(
         totalPageCount - rightItemCount + 1,
         totalPageCount
       );
@@ -140,7 +140,7 @@ function PaginationLogic({
     }
 
     if (hasLeftSibling && hasRightSibling) {
-      let middleRange = range(leftSiblingIndex, rightSiblingIndex);
+      const middleRange = range(leftSiblingIndex, rightSiblingIndex);
 
       return [
         firstIndex,

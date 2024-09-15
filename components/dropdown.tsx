@@ -5,7 +5,7 @@ import { Button } from "./cva/button";
 import { useEffect, useRef, useState } from "react";
 import { IDropdownProps, IDropdownItem } from "@/assets/interfaces";
 
-import handleOutsideClick from "./click-handler";
+import useOutsideClickHandler from "./click-handler";
 
 export function DropdownMenu({
   id,
@@ -14,9 +14,9 @@ export function DropdownMenu({
   selectedId,
   onSelect,
 }: IDropdownProps) {
-  const [isOpen, toggleDropdown] = useState<Boolean>(false);
+  const [isOpen, toggleDropdown] = useState<boolean>(false);
   const [indexItem, setItem] = useState<IDropdownItem | undefined>(
-    selectedId ? data?.find((item: any) => item.id === selectedId) : undefined
+    selectedId ? data?.find((item) => item.id === selectedId) : undefined
   );
 
   const handleChange = (item: IDropdownItem) => {
@@ -27,7 +27,7 @@ export function DropdownMenu({
 
   useEffect(() => {
     if (selectedId && data) {
-      const newSelection = data.find((item: any) => item.id === selectedId);
+      const newSelection = data.find((item) => item.id === selectedId);
       newSelection && setItem(newSelection);
     } else {
       setItem(undefined);
@@ -35,7 +35,7 @@ export function DropdownMenu({
   }, [selectedId, data]);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
-  handleOutsideClick({
+  useOutsideClickHandler({
     ref: dropdownRef,
     handler: () => toggleDropdown(false),
   });
@@ -60,7 +60,7 @@ export function DropdownMenu({
       {isOpen ? (
         <div>
           <ul className="border absolute w-full rounded-[4px] z-10 bg-background">
-            {data.map((item: any) => (
+            {data.map((item) => (
               <DropdownItem item={item} handler={handleChange} key={item.id} />
             ))}
           </ul>
