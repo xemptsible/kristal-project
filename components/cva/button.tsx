@@ -24,7 +24,9 @@ const buttonVariants = cva(["transition-colors", "rounded"], {
         "items-center",
       ],
       icon: ["hover:bg-color-hover"],
-      button: ["disabled:bg-color-disabled hover:bg-color-hover bg-color-main"],
+      button: [
+        "disabled:bg-color-disabled hover:bg-color-main-alt bg-color-main",
+      ],
     },
     size: {
       default: ["px-4", "py-2"],

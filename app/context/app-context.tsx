@@ -69,15 +69,15 @@ export function ApplicationContext({ children }: { children: ReactNode }) {
 
   const dateRangeValue = useMemo(
     () => ({ dateRange, setDateRange }),
-    [dateRange]
+    [dateRange, setDateRange]
   );
   const viewValue = useMemo(
     () => ({ isChart, toggleView }),
-    [isChart]
+    [isChart, toggleView]
   );
   const dropdownValue = useMemo(
     () => ({ selectedItem, setDropdownItem }),
-    [selectedItem]
+    [selectedItem, setDropdownItem]
   );
 
   return (

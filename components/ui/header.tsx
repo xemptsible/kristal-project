@@ -15,26 +15,17 @@ import "react-datepicker/dist/react-datepicker.css";
 export function HeaderComponent({ data }: { data: IDropdownItem[] }) {
   const { isChart, toggleView } = useViewContext();
   const { setDropdownItem } = useDropdownIndexContext();
-  const { dateRange, setDateRange } = useDateRangeContext();
+  const { setDateRange } = useDateRangeContext();
 
   const [index, setSelection] = useState("Tất cả danh mục");
-  const [ranges, setRange] = useState<[Date | null, Date | null]>([
-    dateRange[0],
-    dateRange[1],
-  ]);
+  const [ranges, setRange] = useState<[Date | null, Date | null]>([null, null]);
 
-  function handleNewIndex(newIndex: string) {
-    setSelection(newIndex);
-  }
-
-  function handleNewRange(newRange: [Date | null, Date | null]) {
-    setRange(newRange);
-  }
-
-  const confirm = useMemo(() => {
+  function confirm() {
     setDropdownItem(index);
     setDateRange(ranges);
-  }, [index, ranges]);
+    console.log("final destination: " + ranges);
+    console.log("selected index: " + index);
+  }
 
   return (
     <nav className="flex flex-wrap flex-col sm:flex-row justify-between gap-2 my-2">
@@ -43,10 +34,14 @@ export function HeaderComponent({ data }: { data: IDropdownItem[] }) {
           id={"index"}
           title={"Tất cả danh mục"}
           data={data}
-          onSelect={handleNewIndex}
+          onSelect={(newIndex: string) => setSelection(newIndex)}
         />
-        <DateRangerPicker getDateRange={handleNewRange} />
-        <Button onClick={() => confirm}>
+        <DateRangerPicker
+          getDateRange={(newRange: [Date | null, Date | null]) =>
+            setRange(newRange)
+          }
+        />
+        <Button onClick={() => confirm()}>
           <p className="overflow-hidden overflow-ellipsis">Tra cứu</p>
         </Button>
       </div>

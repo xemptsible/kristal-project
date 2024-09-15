@@ -4,7 +4,7 @@
 
 :root {
   --main: #e87721;
-  --main-alt: #ce7b3b;
+  --main-alt: #f59953;
   --secondary: #6fceb1;
   --secondary-alt: #98ddc8;
   --tertiary: #0a3d34;
@@ -17,12 +17,12 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --main: #e87721;
-    --main-alt: #ce7b3b;
+    --main-alt: #f59953;
     --secondary: #53a089;
     --secondary-alt: #98ddc8;
     --teritary: #0a3d34;
     --hover: hsl(0, 5%, 60%);
-    --disabled: hsl(0, 0%, 72%);
+    --disabled: hsl(0, 0%, 45%);
     --background: #0a0a0a;
     --foreground: #ededed;
   }
