@@ -44,9 +44,7 @@ export function DateRangerPicker({
       endDate={endDate ?? undefined}
       onChange={(update) => {
         setDateInput(update);
-        console.log("set: " + update);
         getDateRange(update);
-        console.log("send up: " + update);
       }}
       wrapperClassName="flex flex-grow md:flex-grow-0"
       customInput={<CustomDateInput className="gap-4 w-full md:w-fit" />}

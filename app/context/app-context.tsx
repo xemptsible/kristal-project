@@ -3,7 +3,14 @@ import {
   IDropdownIndexContext,
   IDateRangeContext,
 } from "@/assets/interfaces";
-import { createContext, ReactNode, useContext, useMemo, useState } from "react";
+import {
+  createContext,
+  ReactNode,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+} from "react";
 
 import mock_data from "@/assets/MOCK_DATA.json";
 
@@ -49,28 +56,35 @@ export function useDateRangeContext() {
 
 export function ApplicationContext({ children }: { children: ReactNode }) {
   const [isChart, toggle] = useState(false);
-  const [selectedItem, set] = useState("Tất cả danh mục");
+  const [selectedItem, setItem] = useState("Tất cả danh mục");
   const [dateRange, setDate] = useState<[Date | null, Date | null]>([
     new Date(mock_data[0].date),
     new Date(mock_data[mock_data.length - 1].date),
   ]);
 
-  function toggleView() {
-    toggle(!isChart);
-  }
+  // TODO: fix re-rendering warning
+  // https://react.dev/reference/react/useContext#optimizing-re-renders-when-passing-objects-and-functions
+  // See 'npm run build'
 
-  function setDropdownItem(item: string) {
-    set(item);
-  }
+  const toggleView = useCallback(() => {
+    console.log("test");
+    toggle((isChart) => !isChart);
+  }, [toggle]);
 
-  function setDateRange(date: [Date | null, Date | null]) {
-    setDate(date);
-  }
-
-  const dateRangeValue = useMemo(
-    () => ({ dateRange, setDateRange }),
-    [dateRange, setDateRange]
+  const setDropdownItem = useCallback(
+    (item: string) => {
+      setItem(item);
+    },
+    [setItem]
   );
+
+  const setDateRange = useCallback(
+    (date: [Date | null, Date | null]) => {
+      setDate(date);
+    },
+    [setDate]
+  );
+
   const viewValue = useMemo(
     () => ({ isChart, toggleView }),
     [isChart, toggleView]
@@ -78,6 +92,10 @@ export function ApplicationContext({ children }: { children: ReactNode }) {
   const dropdownValue = useMemo(
     () => ({ selectedItem, setDropdownItem }),
     [selectedItem, setDropdownItem]
+  );
+  const dateRangeValue = useMemo(
+    () => ({ dateRange, setDateRange }),
+    [dateRange, setDateRange]
   );
 
   return (

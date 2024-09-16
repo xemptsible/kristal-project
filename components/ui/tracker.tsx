@@ -1,4 +1,8 @@
+import { useDateRangeContext } from "@/app/context/app-context";
+
 export function TrackerComponent() {
+  const { dateRange } = useDateRangeContext();
+
   return (
     <table className="table-auto my-2">
       <thead>
@@ -7,10 +11,10 @@ export function TrackerComponent() {
             Tên
           </th>
           <th className="border border-color-secondary-alt bg-color-secondary text-white py-2">
-            Ngày bắt đầu (day)
+            Ngày bắt đầu <br />({dateRange[0]!.toLocaleDateString()})
           </th>
           <th className="border border-color-secondary-alt bg-color-secondary text-white py-2">
-            Ngày kết thúc (day)
+            Ngày kết thúc <br />({dateRange[1]!.toLocaleDateString()})
           </th>
           <th className="border border-color-secondary-alt bg-color-secondary text-white py-2">
             Tăng/Giảm (%)

@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { Button } from "../cva/button";
 import { DropdownMenu } from "../dropdown";
 import {
@@ -11,20 +11,24 @@ import { Toggles } from "../toggle";
 import { IDropdownItem } from "@/assets/interfaces";
 
 import "react-datepicker/dist/react-datepicker.css";
+import mock_data from "@/assets/MOCK_DATA.json";
 
 export function HeaderComponent({ data }: { data: IDropdownItem[] }) {
   const { isChart, toggleView } = useViewContext();
   const { setDropdownItem } = useDropdownIndexContext();
   const { setDateRange } = useDateRangeContext();
 
-  const [index, setSelection] = useState("Tất cả danh mục");
-  const [ranges, setRange] = useState<[Date | null, Date | null]>([null, null]);
+  const [index, setNewIndex] = useState("Tất cả danh mục");
+  const [ranges, setNewRange] = useState<[Date | null, Date | null]>([
+    new Date(mock_data[0].date),
+    new Date(mock_data[mock_data.length - 1].date),
+  ]);
 
   function confirm() {
     setDropdownItem(index);
     setDateRange(ranges);
-    console.log("final destination: " + ranges);
-    console.log("selected index: " + index);
+    // console.log("final destination: " + ranges);
+    // console.log("selected index: " + index);
   }
 
   return (
@@ -34,11 +38,11 @@ export function HeaderComponent({ data }: { data: IDropdownItem[] }) {
           id={"index"}
           title={"Tất cả danh mục"}
           data={data}
-          onSelect={(newIndex: string) => setSelection(newIndex)}
+          onSelect={(newIndex: string) => setNewIndex(newIndex)}
         />
         <DateRangerPicker
           getDateRange={(newRange: [Date | null, Date | null]) =>
-            setRange(newRange)
+            setNewRange(newRange)
           }
         />
         <Button onClick={() => confirm()}>
@@ -46,7 +50,7 @@ export function HeaderComponent({ data }: { data: IDropdownItem[] }) {
         </Button>
       </div>
       <div className="flex flex-row self-end ml-auto">
-        <Toggles isChart={isChart} onClick={() => toggleView()} />
+        <Toggles isChart={isChart} onClick={toggleView} />
       </div>
     </nav>
   );

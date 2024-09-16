@@ -19,19 +19,15 @@ export function TableViewComponent() {
     const first = (currentPage - 1) * defaultPageSize;
     const last = first + defaultPageSize;
 
-
-
-    const filteredData = mock_data.filter((_, i) => {
+    const initialData = mock_data.filter((_, i) => {
       return (
         new Date(mock_data[i].date).getTime() >= dateRange[0]!.getTime() &&
         new Date(mock_data[i].date).getTime() <= dateRange[1]!.getTime()
       );
     });
 
-
-    const intialData = filteredData.slice(first, last);
-    return intialData;
-    // return filteredData;
+    const filteredData = initialData.slice(first, last);
+    return filteredData;
   }, [currentPage, dateRange]);
 
   return (
@@ -40,7 +36,6 @@ export function TableViewComponent() {
       <Pagination
         currentPage={currentPage}
         totalCount={dateDiffInDays(dateRange[0]!, dateRange[1]!)}
-        // totalCount={mock_data.length}
         siblingCount={1}
         pageSize={defaultPageSize}
         onPageChange={(page: number) => setCurrentPage(page)}
