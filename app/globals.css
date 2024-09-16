@@ -4,7 +4,7 @@
 
 :root {
   --main: #e87721;
-  --main-alt: #f59953;
+  --main-alt: #ac5410;
   --secondary: #6fceb1;
   --secondary-alt: #98ddc8;
   --tertiary: #0a3d34;
@@ -17,7 +17,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --main: #e87721;
-    --main-alt: #f59953;
+    --main-alt: #ac5410;
     --secondary: #53a089;
     --secondary-alt: #98ddc8;
     --teritary: #0a3d34;
@@ -37,6 +37,75 @@ body {
 @layer apply {
   .lucide {
     flex-shrink: 0;
+  }
+
+  /* Màu hover */
+  .react-datepicker__day--selected:hover,
+  .react-datepicker__day--in-selecting-range:hover,
+  .react-datepicker__day--in-range:hover,
+  .react-datepicker__month-text--selected:hover,
+  .react-datepicker__month-text--in-selecting-range:hover,
+  .react-datepicker__month-text--in-range:hover,
+  .react-datepicker__quarter-text--selected:hover,
+  .react-datepicker__quarter-text--in-selecting-range:hover,
+  .react-datepicker__quarter-text--in-range:hover,
+  .react-datepicker__year-text--selected:hover,
+  .react-datepicker__year-text--in-selecting-range:hover,
+  .react-datepicker__year-text--in-range:hover {
+    background-color: var(--main-alt) !important;
+  }
+
+  /* Màu ngày được chọn */
+  .react-datepicker__day--selected,
+  .react-datepicker__day--in-selecting-range,
+  .react-datepicker__day--in-range,
+  .react-datepicker__month-text--selected,
+  .react-datepicker__month-text--in-selecting-range,
+  .react-datepicker__month-text--in-range,
+  .react-datepicker__quarter-text--selected,
+  .react-datepicker__quarter-text--in-selecting-range,
+  .react-datepicker__quarter-text--in-range,
+  .react-datepicker__year-text--selected,
+  .react-datepicker__year-text--in-selecting-range,
+  .react-datepicker__year-text--in-range {
+    border-radius: 0.3rem;
+    background-color: var(--main) !important;
+    color: #fff;
+  }
+
+  /* Màu ngày được chọn */
+  .react-datepicker__day--selected:hover,
+  .react-datepicker__day--in-selecting-range:hover,
+  .react-datepicker__day--in-range:hover,
+  .react-datepicker__month-text--selected:hover,
+  .react-datepicker__month-text--in-selecting-range:hover,
+  .react-datepicker__month-text--in-range:hover,
+  .react-datepicker__quarter-text--selected:hover,
+  .react-datepicker__quarter-text--in-selecting-range:hover,
+  .react-datepicker__quarter-text--in-range:hover,
+  .react-datepicker__year-text--selected:hover,
+  .react-datepicker__year-text--in-selecting-range:hover,
+  .react-datepicker__year-text--in-range:hover {
+    background-color: var(--main-alt) !important;
+  }
+
+  /* Màu ngày được chọn khi dùng bàn phím để chọn ngày (Tab) */
+  .react-datepicker__day--keyboard-selected,
+  .react-datepicker__month-text--keyboard-selected,
+  .react-datepicker__quarter-text--keyboard-selected,
+  .react-datepicker__year-text--keyboard-selected {
+    border-radius: 0.3rem;
+    background-color: var(--main-alt) !important;
+    color: #fff !important;
+  }
+
+  /* Ngày hiện tại */
+  .react-datepicker__day--today,
+  .react-datepicker__month-text--today,
+  .react-datepicker__quarter-text--today,
+  .react-datepicker__year-text--today {
+    font-weight: bold;
+    font-style: italic;
   }
 }
 
