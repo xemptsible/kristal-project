@@ -47,7 +47,7 @@ export function DateRangerPicker({
         getDateRange(update);
       }}
       wrapperClassName="flex flex-grow md:flex-grow-0"
-      customInput={<CustomDateInput className="gap-4 w-full md:w-fit" />}
+      customInput={<CustomDateInput className="gap-4 w-full md:w-[249px]" />}
       customInputRef="dateRangeInputRef"
     />
   );

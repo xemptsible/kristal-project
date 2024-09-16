@@ -1,6 +1,5 @@
 "use client";
 
-import { TrackerComponent } from "@/components/ui/tracker";
 import { ChangesComponent } from "@/components/ui/changes";
 import { HeaderComponent } from "@/components/ui/header";
 import { indexDropdownData } from "@/assets/data";
@@ -15,7 +14,6 @@ export default function Home() {
       </header>
       <main className="flex flex-col flex-grow">
         <ViewComponent />
-        <TrackerComponent />
         <ChangesComponent />
       </main>
     </ApplicationContext>

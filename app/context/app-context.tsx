@@ -62,12 +62,9 @@ export function ApplicationContext({ children }: { children: ReactNode }) {
     new Date(mock_data[mock_data.length - 1].date),
   ]);
 
-  // TODO: fix re-rendering warning
   // https://react.dev/reference/react/useContext#optimizing-re-renders-when-passing-objects-and-functions
-  // See 'npm run build'
 
   const toggleView = useCallback(() => {
-    console.log("test");
     toggle((isChart) => !isChart);
   }, [toggle]);
 

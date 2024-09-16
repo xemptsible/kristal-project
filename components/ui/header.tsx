@@ -27,8 +27,6 @@ export function HeaderComponent({ data }: { data: IDropdownItem[] }) {
   function confirm() {
     setDropdownItem(index);
     setDateRange(ranges);
-    // console.log("final destination: " + ranges);
-    // console.log("selected index: " + index);
   }
 
   return (
