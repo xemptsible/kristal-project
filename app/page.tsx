@@ -5,6 +5,7 @@ import { HeaderComponent } from "@/components/ui/header";
 import { indexDropdownData } from "@/assets/data";
 import { ApplicationContext } from "./context/app-context";
 import { ViewComponent } from "@/components/ui/views/.view";
+import { TrackerComponent } from "@/components/ui/tracker";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       </header>
       <main className="flex flex-col flex-grow">
         <ViewComponent />
+        <TrackerComponent />
         <ChangesComponent />
       </main>
     </ApplicationContext>

@@ -1,18 +1,10 @@
 import { useDateRangeContext } from "@/app/context/app-context";
-import { IIndexData } from "@/assets/interfaces";
 
 import mock_data from "@/assets/MOCK_DATA.json";
 import { useMemo } from "react";
 
-export function TrackerComponent({ data }: { data: IIndexData[] }) {
+export function TrackerComponent() {
   const { dateRange } = useDateRangeContext();
-
-  function percentageDiff(startingValue: number, endValue: number) {
-    const changedValue = endValue - startingValue;
-    const percentage = (changedValue / startingValue) * 100;
-
-    return percentage.toFixed(2);
-  }
 
   const currentTrackerData = useMemo(() => {
     const filteredData = mock_data.filter((_, i) => {
@@ -22,10 +14,15 @@ export function TrackerComponent({ data }: { data: IIndexData[] }) {
       );
     });
 
-    console.log(filteredData);
-
     return filteredData;
   }, [dateRange]);
+
+  function percentageDiff(startingValue: number, endValue: number) {
+    const changedValue = endValue - startingValue;
+    const percentage = (changedValue / startingValue) * 100;
+
+    return percentage.toFixed(2);
+  }
 
   return (
     <table className="table-auto my-2">

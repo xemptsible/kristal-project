@@ -8,7 +8,6 @@ import { IIndexData } from "@/assets/interfaces";
 import { dateDiffInDays } from "@/app/helpers/date-diff";
 
 import mock_data from "@/assets/MOCK_DATA.json";
-import { TrackerComponent } from "../tracker";
 
 export function TableViewComponent() {
   const { dateRange } = useDateRangeContext();
@@ -41,7 +40,6 @@ export function TableViewComponent() {
         pageSize={defaultPageSize}
         onPageChange={(page: number) => setCurrentPage(page)}
       />
-      <TrackerComponent data={currentTableData} />
     </>
   );
 }
