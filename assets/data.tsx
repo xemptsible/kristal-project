@@ -1,18 +1,22 @@
-export const changesDropdownData = [
+export const timePeriodDropdownData = [
   {
     id: "1",
     text: "Hôm qua",
   },
   {
     id: "2",
-    text: "1 tuần qua",
+    text: "3 ngày qua",
   },
   {
     id: "3",
-    text: "2 tuần qua",
+    text: "1 tuần qua",
   },
   {
     id: "4",
+    text: "2 tuần qua",
+  },
+  {
+    id: "5",
     text: "1 tháng qua",
   },
   // {

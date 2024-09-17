@@ -18,6 +18,20 @@ export function TrackerComponent() {
     return filteredData;
   }, [dateRange]);
 
+  // Check if the date range selected matches with dates that exist in the data
+  // object.
+
+  // Kiểm tra nếu phạm vi thời gian được chọn có trùng với thời gian có
+  // tồn tại trong dữ liệu object.
+  function checkTrackerDate() {
+    return (
+      new Date(currentTrackerData[0]?.date).getTime() !==
+        new Date(dateRange[0]!).getTime() ||
+      new Date(currentTrackerData[1]?.date).getTime() !==
+        new Date(dateRange[1]!).getTime()
+    );
+  }
+
   return (
     <table className="table-auto my-2">
       <thead>
@@ -42,16 +56,20 @@ export function TrackerComponent() {
             Danh mục A
           </th>
           <td className="border border-color-secondary-alt py-2 text-center text-color-main-text">
-            {currentTrackerData[0]?.indexA ?? "null"}
+            {checkTrackerDate()
+              ? currentTrackerData[1]?.indexA ?? "null"
+              : currentTrackerData[0]?.indexA}
           </td>
           <td className="border border-color-secondary-alt py-2 text-center text-color-main-text">
-            {currentTrackerData[1]?.indexA ?? "null"}
+            {checkTrackerDate()
+              ? currentTrackerData[0]?.indexA ?? "null"
+              : currentTrackerData[1]?.indexA}
           </td>
           <td className="border border-color-secondary-alt py-2 text-center text-color-main-text">
-            {percentageDiff(
+            {`${percentageDiff(
               currentTrackerData[0]?.indexA,
               currentTrackerData[1]?.indexA
-            )}
+            )}%`}
           </td>
         </tr>
         <tr>
@@ -59,16 +77,20 @@ export function TrackerComponent() {
             Danh mục B
           </th>
           <td className="border border-color-secondary-alt py-2 text-center text-color-main-text">
-            {currentTrackerData[0]?.indexB ?? "null"}
+            {checkTrackerDate()
+              ? currentTrackerData[1]?.indexB ?? "null"
+              : currentTrackerData[0]?.indexB}
           </td>
           <td className="border border-color-secondary-alt py-2 text-center text-color-main-text">
-            {currentTrackerData[1]?.indexB ?? "null"}
+            {checkTrackerDate()
+              ? currentTrackerData[0]?.indexB ?? "null"
+              : currentTrackerData[1]?.indexB}
           </td>
           <td className="border border-color-secondary-alt py-2 text-center text-color-main-text">
-            {percentageDiff(
+            {`${percentageDiff(
               currentTrackerData[0]?.indexB,
               currentTrackerData[1]?.indexB
-            )}
+            )}%`}
           </td>
         </tr>
         <tr>
@@ -76,16 +98,20 @@ export function TrackerComponent() {
             Danh mục C
           </th>
           <td className="border border-color-secondary-alt py-2 text-center text-color-main-text">
-            {currentTrackerData[0]?.indexC ?? "null"}
+            {checkTrackerDate()
+              ? currentTrackerData[1]?.indexC ?? "null"
+              : currentTrackerData[0]?.indexC}
           </td>
           <td className="border border-color-secondary-alt py-2 text-center text-color-main-text">
-            {currentTrackerData[1]?.indexC ?? "null"}
+            {checkTrackerDate()
+              ? currentTrackerData[0]?.indexC ?? "null"
+              : currentTrackerData[1]?.indexC}
           </td>
           <td className="border border-color-secondary-alt py-2 text-center text-color-main-text">
-            {percentageDiff(
+            {`${percentageDiff(
               currentTrackerData[0]?.indexC,
               currentTrackerData[1]?.indexC
-            )}
+            )}%`}
           </td>
         </tr>
       </tbody>
