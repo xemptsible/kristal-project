@@ -34,11 +34,11 @@ export function ChangesComponent() {
         <h1>Thay đổi của giá trị danh mục</h1>
       </div>
       <div className="items-center border-b md:border-b-0 sm:border-r border-color-secondary-alt">
-        <h2 className="font-bold">Từ lúc bắt đầu danh mục</h2>
+        <h2 className="font-bold py-2">Từ lúc bắt đầu danh mục</h2>
       </div>
       <div className="border-color-secondary-alt">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
-          <h2 className="font-bold sm:mb-2">Thời gian</h2>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <h2 className="font-bold mb-1 sm:mb-0">Thời gian</h2>
           <DropdownMenu
             id={"lastChanged"}
             title={timePeriodDropdownData[0].text}
@@ -48,7 +48,7 @@ export function ChangesComponent() {
             }}
           />
         </div>
-        <ul className="[&>li]:py-2">
+        <ul className="[&>li]:py-2 mt-2">
           <li>
             <div className="flex justify-between">
               <span>Danh mục A</span>
