@@ -2,13 +2,9 @@ import { timePeriodDropdownData } from "@/assets/data";
 import { DropdownMenu } from "../dropdown";
 import { useMemo, useState } from "react";
 import { useDateRangeContext } from "@/app/context/app-context";
+import { percentageDiffByDate } from "@/app/helpers/percentage-calc";
 
 import mock_data from "@/assets/MOCK_DATA.json";
-import {
-  percentageDiff,
-  percentageDiffByDate,
-} from "@/app/helpers/percentage-calc";
-import { dateDiffInDays } from "@/app/helpers/date-diff";
 
 export function ChangesComponent() {
   const { dateRange } = useDateRangeContext();
@@ -53,6 +49,7 @@ export function ChangesComponent() {
             <div className="flex justify-between">
               <span>Danh mục A</span>
               <span>{`${percentageDiffByDate(
+                "a",
                 timePeriod,
                 changesOvertimeData,
                 dateRange[1]
@@ -62,18 +59,22 @@ export function ChangesComponent() {
           <li>
             <div className="flex justify-between">
               <span>Danh mục B</span>
-              <span>{`${percentageDiff(
-                changesOvertimeData[0]?.indexB,
-                changesOvertimeData[1]?.indexB
+              <span>{`${percentageDiffByDate(
+                "b",
+                timePeriod,
+                changesOvertimeData,
+                dateRange[1]
               )}%`}</span>
             </div>
           </li>
           <li>
             <div className="flex justify-between">
               <span>Danh mục C</span>
-              <span>{`${percentageDiff(
-                changesOvertimeData[0]?.indexC,
-                changesOvertimeData[1]?.indexC
+              <span>{`${percentageDiffByDate(
+                "c",
+                timePeriod,
+                changesOvertimeData,
+                dateRange[1]
               )}%`}</span>
             </div>
           </li>

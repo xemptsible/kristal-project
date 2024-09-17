@@ -1,7 +1,7 @@
 export const timePeriodDropdownData = [
   {
     id: "1",
-    text: "Hôm qua",
+    text: "1 ngày qua",
   },
   {
     id: "2",
