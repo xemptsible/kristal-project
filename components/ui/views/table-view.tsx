@@ -11,6 +11,7 @@ import mock_data from "@/assets/MOCK_DATA.json";
 
 export function TableViewComponent() {
   const { dateRange } = useDateRangeContext();
+
   const [currentPage, setCurrentPage] = useState(1);
 
   const defaultPageSize = 5;
@@ -26,6 +27,12 @@ export function TableViewComponent() {
       );
     });
 
+    // Reset page count to 1 if total data is only worth 1 page
+    // Reset số trang về trang đầu tiên nếu dữ liệu chỉ đủ cho 1 trang
+    if (initialData.length <= 5) {
+      setCurrentPage(1);
+    }
+
     const filteredData = initialData.slice(first, last);
 
     return filteredData;
@@ -39,7 +46,9 @@ export function TableViewComponent() {
         totalCount={dateDiffInDays(dateRange[0]!, dateRange[1]!)}
         siblingCount={1}
         pageSize={defaultPageSize}
-        onPageChange={(page: number) => setCurrentPage(page)}
+        onPageChange={(page: number) => {
+          setCurrentPage(page);
+        }}
       />
     </>
   );
