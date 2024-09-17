@@ -4,6 +4,7 @@ export interface IDropdownItem {
 }
 
 export interface IDropdownProps {
+  id: string;
   title: string;
   data: IDropdownItem[];
   selectedId?: string;

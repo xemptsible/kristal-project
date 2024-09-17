@@ -5,9 +5,10 @@ import { Button } from "./cva/button";
 import { useEffect, useRef, useState } from "react";
 import { IDropdownProps, IDropdownItem } from "@/assets/interfaces";
 
-import useOutsideClickHandler from "../app/helpers/click-handler";
+import useOutsideClickHandler from "@/app/helpers/click-handler";
 
 export function DropdownMenu({
+  id,
   title,
   data,
   selectedId,
@@ -45,6 +46,7 @@ export function DropdownMenu({
       className="flex flex-col flex-grow sm:flex-grow-0 sm:w-[200px] relative"
     >
       <Button
+        id={id}
         variant={"action"}
         className="flex flex-grow gap-4"
         type="button"

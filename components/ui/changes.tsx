@@ -13,6 +13,7 @@ export function ChangesComponent() {
       <div className="flex flex-col sm:flex-row justify-between gap-2 border-color-secondary-alt">
         <h1 className="text-lg font-bold sm:mb-2">Thời gian</h1>
         <DropdownMenu
+          id={"lastChanged"}
           title={changesDropdownData[0].text}
           data={changesDropdownData}
         />

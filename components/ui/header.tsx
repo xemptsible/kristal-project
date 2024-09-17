@@ -34,6 +34,7 @@ export function HeaderComponent({ data }: { data: IDropdownItem[] }) {
     <nav className="flex flex-wrap flex-col sm:flex-row justify-between gap-2 my-2">
       <div className="flex flex-grow flex-col sm:flex-row w-full sm:w-fit gap-2">
         <DropdownMenu
+          id={"index"}
           title={indexDropdownData[0].text}
           data={data}
           onSelect={(newIndex: string) => setNewIndex(newIndex)}
