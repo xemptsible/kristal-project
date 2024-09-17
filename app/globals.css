@@ -8,7 +8,7 @@
   --secondary: #6fceb1;
   --secondary-alt: #98ddc8;
   --tertiary: #0a3d34;
-  --hover: hsl(0, 5%, 80%);
+  --hover: hsl(0, 0%, 87%);
   --disabled: hsl(0, 0%, 90%);
   --background: #ffffff;
   --foreground: #171717;
@@ -21,7 +21,7 @@
     --secondary: #53a089;
     --secondary-alt: #98ddc8;
     --teritary: #0a3d34;
-    --hover: hsl(0, 5%, 60%);
+    --hover: hsl(0, 0%, 25%);
     --disabled: hsl(0, 0%, 45%);
     --background: #0a0a0a;
     --foreground: #ededed;

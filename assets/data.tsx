@@ -1,3 +1,26 @@
+export const changesDropdownData = [
+  {
+    id: "1",
+    text: "Hôm qua",
+  },
+  {
+    id: "2",
+    text: "1 tuần qua",
+  },
+  {
+    id: "3",
+    text: "2 tuần qua",
+  },
+  {
+    id: "4",
+    text: "1 tháng qua",
+  },
+  // {
+  //   id: "5",
+  //   text: "Tên rất dàiiiiiiiiiiiiiiiiiiii",
+  // },
+];
+
 export const indexDropdownData = [
   {
     id: "1",

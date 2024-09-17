@@ -32,10 +32,10 @@ export function TrackerComponent() {
             Tên
           </th>
           <th className="border border-color-secondary-alt bg-color-secondary text-white py-2">
-            Ngày bắt đầu <br />({dateRange[0]!.toLocaleDateString()})
+            Ngày bắt đầu <br />({dateRange[0]?.toLocaleDateString()})
           </th>
           <th className="border border-color-secondary-alt bg-color-secondary text-white py-2">
-            Ngày kết thúc <br />({dateRange[1]!.toLocaleDateString()})
+            Ngày kết thúc <br />({dateRange[1]?.toLocaleDateString()})
           </th>
           <th className="border border-color-secondary-alt bg-color-secondary text-white py-2">
             Tăng/Giảm (%)
@@ -48,15 +48,15 @@ export function TrackerComponent() {
             Danh mục A
           </th>
           <td className="border border-color-secondary-alt py-2 text-center text-color-main">
-            {currentTrackerData[0].indexA}
+            {currentTrackerData[0]?.indexA ?? "null"}
           </td>
           <td className="border border-color-secondary-alt py-2 text-center text-color-main">
-            {currentTrackerData[1].indexA}
+            {currentTrackerData[1]?.indexA ?? "null"}
           </td>
           <td className="border border-color-secondary-alt py-2 text-center text-color-main">
             {percentageDiff(
-              currentTrackerData[0].indexA,
-              currentTrackerData[1].indexA
+              currentTrackerData[0]?.indexA,
+              currentTrackerData[1]?.indexA
             )}
           </td>
         </tr>
@@ -65,15 +65,15 @@ export function TrackerComponent() {
             Danh mục B
           </th>
           <td className="border border-color-secondary-alt py-2 text-center text-color-main">
-            {currentTrackerData[0].indexB}
+            {currentTrackerData[0]?.indexB ?? "null"}
           </td>
           <td className="border border-color-secondary-alt py-2 text-center text-color-main">
-            {currentTrackerData[1].indexB}
+            {currentTrackerData[1]?.indexB ?? "null"}
           </td>
           <td className="border border-color-secondary-alt py-2 text-center text-color-main">
             {percentageDiff(
-              currentTrackerData[0].indexB,
-              currentTrackerData[1].indexB
+              currentTrackerData[0]?.indexB,
+              currentTrackerData[1]?.indexB
             )}
           </td>
         </tr>
@@ -82,15 +82,15 @@ export function TrackerComponent() {
             Danh mục C
           </th>
           <td className="border border-color-secondary-alt py-2 text-center text-color-main">
-            {currentTrackerData[0].indexC}
+            {currentTrackerData[0]?.indexC ?? "null"}
           </td>
           <td className="border border-color-secondary-alt py-2 text-center text-color-main">
-            {currentTrackerData[1].indexC}
+            {currentTrackerData[1]?.indexC ?? "null"}
           </td>
           <td className="border border-color-secondary-alt py-2 text-center text-color-main">
             {percentageDiff(
-              currentTrackerData[0].indexC,
-              currentTrackerData[1].indexC
+              currentTrackerData[0]?.indexC,
+              currentTrackerData[1]?.indexC
             )}
           </td>
         </tr>

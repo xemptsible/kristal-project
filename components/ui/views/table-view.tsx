@@ -27,6 +27,7 @@ export function TableViewComponent() {
     });
 
     const filteredData = initialData.slice(first, last);
+
     return filteredData;
   }, [currentPage, dateRange]);
 
@@ -46,20 +47,27 @@ export function TableViewComponent() {
 
 function Table({ data }: { data: IIndexData[] }) {
   const { selectedItem } = useDropdownIndexContext();
-  return (
-    <table className="table-auto my-2">
-      {selectedItem == "Tất cả danh mục" ? (
-        <AllIndexes data={data} />
-      ) : (
-        <SelectedIndex data={data} />
-      )}
-    </table>
-  );
+
+  function tableHandler(item: string) {
+    const sub = "tất cả";
+    const isAllIndex = item.toLowerCase().includes(sub);
+
+    switch (isAllIndex) {
+      case true:
+        return <AllIndexes data={data} />;
+      case false:
+        return <SelectedIndex data={data} />;
+      default:
+        return <div className="text-center">Danh mục không tồn tại</div>;
+    }
+  }
+
+  return tableHandler(selectedItem);
 }
 
 function AllIndexes({ data }: { data: IIndexData[] }) {
   return (
-    <>
+    <table className="table-auto my-2">
       <thead>
         <tr>
           <th className="border border-color-secondary-alt bg-color-secondary text-white py-2">
@@ -108,7 +116,7 @@ function AllIndexes({ data }: { data: IIndexData[] }) {
           );
         })}
       </tbody>
-    </>
+    </table>
   );
 }
 
@@ -122,60 +130,21 @@ function SelectedIndex({ data }: { data: IIndexData[] }) {
       case "Danh mục A":
         node = data.map((item: IIndexData) => {
           return (
-            <tr key={item.id}>
-              <td
-                key={item.date}
-                className="border py-2 border-color-secondary-alt text-center"
-              >
-                {item.date}
-              </td>
-              <td
-                key={item.indexA}
-                className="border py-2 border-color-secondary-alt text-center"
-              >
-                {item.indexA}
-              </td>
-            </tr>
+            <TestIndex key={item.id} index={item.indexA} date={item.date} />
           );
         });
         break;
       case "Danh mục B":
         node = data.map((item: IIndexData) => {
           return (
-            <tr key={item.id}>
-              <td
-                key={item.date}
-                className="border py-2 border-color-secondary-alt text-center"
-              >
-                {item.date}
-              </td>
-              <td
-                key={item.indexB}
-                className="border py-2 border-color-secondary-alt text-center"
-              >
-                {item.indexB}
-              </td>
-            </tr>
+            <TestIndex key={item.id} index={item.indexB} date={item.date} />
           );
         });
         break;
       case "Danh mục C":
         node = data.map((item: IIndexData) => {
           return (
-            <tr key={item.id}>
-              <td
-                key={item.date}
-                className="border py-2 border-color-secondary-alt text-center"
-              >
-                {item.date}
-              </td>
-              <td
-                key={item.indexC}
-                className="border py-2 border-color-secondary-alt text-center"
-              >
-                {item.indexC}
-              </td>
-            </tr>
+            <TestIndex key={item.id} index={item.indexB} date={item.date} />
           );
         });
         break;
@@ -185,18 +154,31 @@ function SelectedIndex({ data }: { data: IIndexData[] }) {
   }
 
   return (
-    <>
+    <table className="table-auto my-2">
       <thead>
         <tr>
-          <th className="border py-2 border-color-secondary-alt bg-color-secondary text-center">
+          <th className="border py-2 border-color-secondary-alt bg-color-secondary text-center text-white">
             Ngày
           </th>
-          <th className="border py-2 border-color-secondary-alt bg-color-secondary text-center">
+          <th className="border py-2 border-color-secondary-alt bg-color-secondary text-center text-white">
             {selectedItem ?? "Error"}
           </th>
         </tr>
       </thead>
       <tbody>{indexHandler(selectedItem)}</tbody>
-    </>
+    </table>
+  );
+}
+
+function TestIndex({ date, index }: { date: string; index: number }) {
+  return (
+    <tr>
+      <td className="border py-2 border-color-secondary-alt text-center">
+        {date}
+      </td>
+      <td className="border py-2 border-color-secondary-alt text-center">
+        {index}
+      </td>
+    </tr>
   );
 }

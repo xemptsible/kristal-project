@@ -1,12 +1,9 @@
-import { Dispatch, SetStateAction } from "react";
-
 export interface IDropdownItem {
   id: string;
   text: string;
 }
 
 export interface IDropdownProps {
-  id: string;
   title: string;
   data: IDropdownItem[];
   selectedId?: string;
