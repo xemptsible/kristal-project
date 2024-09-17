@@ -9,6 +9,7 @@ const buttonVariants = cva(["transition-colors", "rounded"], {
         "hover:bg-color-orange-hover",
         "bg-color-main",
         "text-white",
+        "font-bold",
         "hover:bg-color-main-alt",
         "justify-center",
         "flex-shrink-0",

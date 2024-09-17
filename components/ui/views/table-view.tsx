@@ -29,7 +29,7 @@ export function TableViewComponent() {
 
     // Reset page count to 1 if total data is only worth 1 page
     // Reset số trang về trang đầu tiên nếu dữ liệu chỉ đủ cho 1 trang
-    if (initialData.length <= 5) {
+    if (initialData.length <= defaultPageSize) {
       setCurrentPage(1);
     }
 

@@ -1,4 +1,5 @@
 import { useDateRangeContext } from "@/app/context/app-context";
+import { percentageDiff } from "@/app/helpers/percentage-calc";
 
 import mock_data from "@/assets/MOCK_DATA.json";
 import { useMemo } from "react";
@@ -16,13 +17,6 @@ export function TrackerComponent() {
 
     return filteredData;
   }, [dateRange]);
-
-  function percentageDiff(startingValue: number, endValue: number) {
-    const changedValue = endValue - startingValue;
-    const percentage = (changedValue / startingValue) * 100;
-
-    return percentage.toFixed(2);
-  }
 
   return (
     <table className="table-auto my-2">
@@ -47,13 +41,13 @@ export function TrackerComponent() {
           <th className="border border-color-secondary-alt py-2 text-center text-color-main bg-color-tertiary">
             Danh mục A
           </th>
-          <td className="border border-color-secondary-alt py-2 text-center text-color-main">
+          <td className="border border-color-secondary-alt py-2 text-center text-color-main-text">
             {currentTrackerData[0]?.indexA ?? "null"}
           </td>
-          <td className="border border-color-secondary-alt py-2 text-center text-color-main">
+          <td className="border border-color-secondary-alt py-2 text-center text-color-main-text">
             {currentTrackerData[1]?.indexA ?? "null"}
           </td>
-          <td className="border border-color-secondary-alt py-2 text-center text-color-main">
+          <td className="border border-color-secondary-alt py-2 text-center text-color-main-text">
             {percentageDiff(
               currentTrackerData[0]?.indexA,
               currentTrackerData[1]?.indexA
@@ -64,13 +58,13 @@ export function TrackerComponent() {
           <th className="border border-color-secondary-alt py-2 text-center text-color-main bg-color-tertiary">
             Danh mục B
           </th>
-          <td className="border border-color-secondary-alt py-2 text-center text-color-main">
+          <td className="border border-color-secondary-alt py-2 text-center text-color-main-text">
             {currentTrackerData[0]?.indexB ?? "null"}
           </td>
-          <td className="border border-color-secondary-alt py-2 text-center text-color-main">
+          <td className="border border-color-secondary-alt py-2 text-center text-color-main-text">
             {currentTrackerData[1]?.indexB ?? "null"}
           </td>
-          <td className="border border-color-secondary-alt py-2 text-center text-color-main">
+          <td className="border border-color-secondary-alt py-2 text-center text-color-main-text">
             {percentageDiff(
               currentTrackerData[0]?.indexB,
               currentTrackerData[1]?.indexB
@@ -81,13 +75,13 @@ export function TrackerComponent() {
           <th className="border border-color-secondary-alt py-2 text-center text-color-main bg-color-tertiary">
             Danh mục C
           </th>
-          <td className="border border-color-secondary-alt py-2 text-center text-color-main">
+          <td className="border border-color-secondary-alt py-2 text-center text-color-main-text">
             {currentTrackerData[0]?.indexC ?? "null"}
           </td>
-          <td className="border border-color-secondary-alt py-2 text-center text-color-main">
+          <td className="border border-color-secondary-alt py-2 text-center text-color-main-text">
             {currentTrackerData[1]?.indexC ?? "null"}
           </td>
-          <td className="border border-color-secondary-alt py-2 text-center text-color-main">
+          <td className="border border-color-secondary-alt py-2 text-center text-color-main-text">
             {percentageDiff(
               currentTrackerData[0]?.indexC,
               currentTrackerData[1]?.indexC

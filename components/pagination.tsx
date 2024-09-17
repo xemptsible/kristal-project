@@ -34,7 +34,7 @@ export function Pagination({
   const lastIndex = paginationRange[paginationRange.length - 1];
 
   const disabledColor = "hsl(0, 0%, 70%)";
-  const selectedColor = "text-color-main";
+  const selectedColor = "text-color-main-text";
   const activeColor = "#ffffff";
 
   return (

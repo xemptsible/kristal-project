@@ -16,7 +16,7 @@ export function Toggles({
         className="flex self-end"
         onClick={onClick}
       >
-        <ChartLine color={isChart ? "hsl(26, 81%, 52%)" : "currentColor"} />
+        <ChartLine color={isChart ? "var(--main)" : "currentColor"} />
       </Button>
       <Button
         variant={"icon"}
@@ -24,7 +24,7 @@ export function Toggles({
         className="flex self-end"
         onClick={onClick}
       >
-        <Table color={!isChart ? "hsl(26, 81%, 52%)" : "currentColor"} />
+        <Table color={!isChart ? "var(--main)" : "currentColor"} />
       </Button>
     </>
   );

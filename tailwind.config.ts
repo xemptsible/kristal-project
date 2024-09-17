@@ -14,6 +14,7 @@ const config: Config = {
         color: {
           main: "var(--main)",
           "main-alt": "var(--main-alt)",
+          "main-text": "var(--main-text)",
           secondary: "var(--secondary)",
           "secondary-alt": "var(--secondary-alt)",
           tertiary: "var(--tertiary)",

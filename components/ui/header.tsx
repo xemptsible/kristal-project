@@ -9,17 +9,17 @@ import {
 import { DateRangerPicker } from "../date-range-picker";
 import { Toggles } from "../toggle";
 import { IDropdownItem } from "@/assets/interfaces";
+import { indexDropdownData } from "@/assets/data";
 
 import "react-datepicker/dist/react-datepicker.css";
 import mock_data from "@/assets/MOCK_DATA.json";
-import { indexDropdownData } from "@/assets/data";
 
 export function HeaderComponent({ data }: { data: IDropdownItem[] }) {
   const { isChart, toggleView } = useViewContext();
   const { setDropdownItem } = useDropdownIndexContext();
   const { setDateRange } = useDateRangeContext();
 
-  const [index, setNewIndex] = useState("Tất cả danh mục");
+  const [index, setNewIndex] = useState(indexDropdownData[0].text);
   const [ranges, setNewRange] = useState<[Date | null, Date | null]>([
     new Date(mock_data[0].date),
     new Date(mock_data[mock_data.length - 1].date),

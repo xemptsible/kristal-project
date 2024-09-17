@@ -5,8 +5,9 @@
 :root {
   --main: #e87721;
   --main-alt: #ac5410;
-  --secondary: #6fceb1;
-  --secondary-alt: #98ddc8;
+  --main-text: #c45d0e;
+  --secondary: #6eceb2;
+  --secondary-alt: #B3E6D7;
   --tertiary: #0a3d34;
   --hover: hsl(0, 0%, 87%);
   --disabled: hsl(0, 0%, 90%);
@@ -17,8 +18,9 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --main: #e87721;
-    --main-alt: #ac5410;
-    --secondary: #53a089;
+    --main-alt: #be5504;
+    --main-text: #ffa865;
+    --secondary: #046b4c;
     --secondary-alt: #98ddc8;
     --teritary: #0a3d34;
     --hover: hsl(0, 0%, 25%);
@@ -86,7 +88,7 @@ body {
   .react-datepicker__year-text--selected:hover,
   .react-datepicker__year-text--in-selecting-range:hover,
   .react-datepicker__year-text--in-range:hover {
-    background-color: var(--main-alt) !important;
+    background-color: var(--main-text) !important;
   }
 
   /* Màu ngày được chọn khi dùng bàn phím để chọn ngày (Tab) */
@@ -95,7 +97,7 @@ body {
   .react-datepicker__quarter-text--keyboard-selected,
   .react-datepicker__year-text--keyboard-selected {
     border-radius: 0.3rem;
-    background-color: var(--main-alt) !important;
+    background-color: var(--main-text) !important;
     color: #fff !important;
   }
 
