@@ -88,7 +88,8 @@ export function ChartViewComponent({ data }: { data: IIndexData[] }) {
         <XAxis dataKey="date" />
         <YAxis interval={"preserveStartEnd"} padding={{ top: 0, bottom: 0 }} />
         <Tooltip
-          contentStyle={{ backgroundColor: "black" }}
+          labelStyle={{ color: "var(--foreground)" }}
+          contentStyle={{ backgroundColor: "var(--background)" }}
         />
         <Legend />
         {lineHandler()}

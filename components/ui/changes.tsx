@@ -146,7 +146,10 @@ export function ChangesOverTimeChart({
         <CartesianGrid horizontal={false} strokeDasharray={10} />
         <XAxis type="number" />
         <YAxis type="category" dataKey={"name"} />
-        <Tooltip contentStyle={{ backgroundColor: "black" }} />
+        <Tooltip
+          labelStyle={{ color: "var(--foreground)" }}
+          contentStyle={{ backgroundColor: "var(--background)" }}
+        />
         <Bar unit={"%"} name={"Tăng/Giảm"} dataKey="percent" fill="#6ECEB2" />
       </BarChart>
     </ResponsiveContainer>
