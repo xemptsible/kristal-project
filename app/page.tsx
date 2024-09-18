@@ -1,6 +1,6 @@
 "use client";
 
-import { ChangesComponent, ChangesOverTimeChart } from "@/components/ui/changes";
+import { ChangesComponent } from "@/components/ui/changes";
 import { HeaderComponent } from "@/components/ui/header";
 import { indexDropdownData } from "@/assets/data";
 import { ApplicationContext } from "./context/app-context";

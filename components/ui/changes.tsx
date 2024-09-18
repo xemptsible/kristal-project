@@ -12,14 +12,11 @@ import {
   Bar,
   BarChart,
   CartesianGrid,
-  Label,
-  Legend,
   ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
-import { IIndexData } from "@/assets/interfaces";
 
 export function ChangesComponent() {
   const { dateRange } = useDateRangeContext();
