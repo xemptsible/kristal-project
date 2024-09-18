@@ -1,17 +1,11 @@
 import { ReactNode, useMemo, useState } from "react";
 import {
-  useDateRangeContext,
   useDropdownIndexContext,
 } from "@/app/context/app-context";
 import { Pagination } from "@/components/pagination";
 import { IIndexData } from "@/assets/interfaces";
-import { dateDiffInDays } from "@/app/helpers/date-diff";
 
-import mock_data from "@/assets/MOCK_DATA.json";
-
-export function TableViewComponent() {
-  const { dateRange } = useDateRangeContext();
-
+export function TableViewComponent({ data }: { data: IIndexData[] }) {
   const [currentPage, setCurrentPage] = useState(1);
 
   const defaultPageSize = 5;
@@ -20,30 +14,25 @@ export function TableViewComponent() {
     const first = (currentPage - 1) * defaultPageSize;
     const last = first + defaultPageSize;
 
-    const initialData = mock_data.filter((_, i) => {
-      return (
-        new Date(mock_data[i].date).getTime() >= dateRange[0]!.getTime() &&
-        new Date(mock_data[i].date).getTime() <= dateRange[1]!.getTime()
-      );
-    });
+    // Reset page count to 1 if total data is only worth 1 page or is over the new total page count
+    // Reset số trang về trang đầu tiên nếu dữ liệu chỉ đủ cho 1 trang hoặc hơn số trang mới
+    const isOverPageCount = currentPage > data.length / defaultPageSize;
 
-    // Reset page count to 1 if total data is only worth 1 page
-    // Reset số trang về trang đầu tiên nếu dữ liệu chỉ đủ cho 1 trang
-    if (initialData.length <= defaultPageSize) {
+    if (data.length <= defaultPageSize || isOverPageCount) {
       setCurrentPage(1);
     }
 
-    const filteredData = initialData.slice(first, last);
+    const filteredData = data.slice(first, last);
 
     return filteredData;
-  }, [currentPage, dateRange]);
+  }, [currentPage, data]);
 
   return (
     <>
       <Table data={currentTableData} />
       <Pagination
         currentPage={currentPage}
-        totalCount={dateDiffInDays(dateRange[0]!, dateRange[1]!)}
+        totalCount={data.length}
         siblingCount={1}
         pageSize={defaultPageSize}
         onPageChange={(page: number) => {

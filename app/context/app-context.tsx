@@ -55,7 +55,7 @@ export function useDateRangeContext() {
 }
 
 export function ApplicationContext({ children }: { children: ReactNode }) {
-  const [isChart, toggle] = useState(false);
+  const [isChart, toggle] = useState(true);
   const [selectedItem, setItem] = useState("Tất cả danh mục");
   const [dateRange, setDate] = useState<[Date | null, Date | null]>([
     new Date(mock_data[0].date),

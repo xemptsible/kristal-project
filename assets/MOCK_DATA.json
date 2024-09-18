@@ -2,351 +2,344 @@
     {
         "id": 1,
         "date": "09/06/2024",
-        "indexA": 481,
-        "indexB": 128,
-        "indexC": 507
+        "indexA": 349,
+        "indexB": 151,
+        "indexC": 578
     },
     {
         "id": 2,
         "date": "09/07/2024",
-        "indexA": 536,
-        "indexB": 165,
-        "indexC": 519
+        "indexA": 373,
+        "indexB": 125,
+        "indexC": 514
     },
     {
         "id": 3,
         "date": "09/08/2024",
-        "indexA": 918,
-        "indexB": 122,
-        "indexC": 483
+        "indexA": 570,
+        "indexB": 192,
+        "indexC": 462
     },
     {
         "id": 4,
         "date": "09/09/2024",
-        "indexA": 746,
-        "indexB": 166,
-        "indexC": 482
+        "indexA": 685,
+        "indexB": 175,
+        "indexC": 548
     },
     {
         "id": 5,
         "date": "09/10/2024",
-        "indexA": 438,
-        "indexB": 161,
-        "indexC": 577
+        "indexA": 660,
+        "indexB": 199,
+        "indexC": 418
     },
     {
         "id": 6,
         "date": "09/11/2024",
-        "indexA": 707,
-        "indexB": 112,
-        "indexC": 540
+        "indexA": 533,
+        "indexB": 171,
+        "indexC": 473
     },
     {
         "id": 7,
         "date": "09/12/2024",
-        "indexA": 628,
-        "indexB": 132,
-        "indexC": 505
+        "indexA": 367,
+        "indexB": 160,
+        "indexC": 429
     },
     {
         "id": 8,
         "date": "09/13/2024",
-        "indexA": 831,
-        "indexB": 129,
-        "indexC": 514
+        "indexA": 442,
+        "indexB": 119,
+        "indexC": 551
     },
     {
         "id": 9,
         "date": "09/14/2024",
-        "indexA": 536,
-        "indexB": 132,
-        "indexC": 406
+        "indexA": 548,
+        "indexB": 129,
+        "indexC": 475
     },
     {
         "id": 10,
         "date": "09/15/2024",
-        "indexA": 367,
-        "indexB": 195,
-        "indexC": 528
+        "indexA": 989,
+        "indexB": 197,
+        "indexC": 417
     },
     {
         "id": 11,
         "date": "09/16/2024",
-        "indexA": 753,
-        "indexB": 129,
-        "indexC": 498
+        "indexA": 712,
+        "indexB": 101,
+        "indexC": 410
     },
     {
         "id": 12,
         "date": "09/17/2024",
-        "indexA": 522,
-        "indexB": 127,
-        "indexC": 470
+        "indexA": 497,
+        "indexB": 109,
+        "indexC": 563
     },
     {
         "id": 13,
         "date": "09/18/2024",
-        "indexA": 511,
-        "indexB": 147,
-        "indexC": 481
+        "indexA": 605,
+        "indexB": 117,
+        "indexC": 530
     },
     {
         "id": 14,
         "date": "09/19/2024",
-        "indexA": 946,
-        "indexB": 152,
-        "indexC": 572
+        "indexA": 941,
+        "indexB": 151,
+        "indexC": 543
     },
     {
         "id": 15,
         "date": "09/20/2024",
-        "indexA": 601,
-        "indexB": 138,
-        "indexC": 458
+        "indexA": 485,
+        "indexB": 123,
+        "indexC": 404
     },
     {
         "id": 16,
         "date": "09/21/2024",
-        "indexA": 947,
-        "indexB": 182,
-        "indexC": 486
+        "indexA": 970,
+        "indexB": 194,
+        "indexC": 456
     },
     {
         "id": 17,
         "date": "09/22/2024",
-        "indexA": 813,
-        "indexB": 106,
-        "indexC": 576
+        "indexA": 670,
+        "indexB": 108,
+        "indexC": 549
     },
     {
         "id": 18,
         "date": "09/23/2024",
-        "indexA": 980,
-        "indexB": 133,
-        "indexC": 558
+        "indexA": 586,
+        "indexB": 155,
+        "indexC": 522
     },
     {
         "id": 19,
         "date": "09/24/2024",
-        "indexA": 395,
-        "indexB": 107,
-        "indexC": 456
+        "indexA": 948,
+        "indexB": 187,
+        "indexC": 431
     },
     {
         "id": 20,
         "date": "09/25/2024",
-        "indexA": 963,
-        "indexB": 127,
-        "indexC": 448
+        "indexA": 425,
+        "indexB": 183,
+        "indexC": 581
     },
     {
         "id": 21,
         "date": "09/26/2024",
-        "indexA": 401,
-        "indexB": 130,
-        "indexC": 472
+        "indexA": 303,
+        "indexB": 141,
+        "indexC": 592
     },
     {
         "id": 22,
         "date": "09/27/2024",
-        "indexA": 675,
-        "indexB": 153,
-        "indexC": 598
+        "indexA": 768,
+        "indexB": 127,
+        "indexC": 520
     },
     {
         "id": 23,
         "date": "09/28/2024",
-        "indexA": 975,
-        "indexB": 115,
-        "indexC": 497
+        "indexA": 853,
+        "indexB": 197,
+        "indexC": 576
     },
     {
         "id": 24,
         "date": "09/29/2024",
-        "indexA": 918,
-        "indexB": 132,
-        "indexC": 412
+        "indexA": 472,
+        "indexB": 171,
+        "indexC": 558
     },
     {
         "id": 25,
         "date": "09/30/2024",
-        "indexA": 390,
-        "indexB": 179,
-        "indexC": 540
+        "indexA": 840,
+        "indexB": 167,
+        "indexC": 439
     },
     {
         "id": 26,
         "date": "10/01/2024",
-        "indexA": 750,
-        "indexB": 113,
-        "indexC": 574
+        "indexA": 741,
+        "indexB": 132,
+        "indexC": 580
     },
     {
         "id": 27,
         "date": "10/02/2024",
-        "indexA": 312,
-        "indexB": 133,
-        "indexC": 597
+        "indexA": 940,
+        "indexB": 174,
+        "indexC": 430
     },
     {
         "id": 28,
         "date": "10/03/2024",
-        "indexA": 469,
-        "indexB": 148,
-        "indexC": 535
+        "indexA": 695,
+        "indexB": 151,
+        "indexC": 562
     },
     {
         "id": 29,
         "date": "10/04/2024",
-        "indexA": 737,
-        "indexB": 165,
-        "indexC": 575
+        "indexA": 782,
+        "indexB": 135,
+        "indexC": 456
     },
     {
         "id": 30,
         "date": "10/05/2024",
-        "indexA": 868,
-        "indexB": 169,
-        "indexC": 499
+        "indexA": 926,
+        "indexB": 127,
+        "indexC": 536
     },
     {
         "id": 31,
         "date": "10/06/2024",
-        "indexA": 327,
-        "indexB": 168,
-        "indexC": 487
+        "indexA": 563,
+        "indexB": 146,
+        "indexC": 593
     },
     {
         "id": 32,
         "date": "10/07/2024",
-        "indexA": 489,
-        "indexB": 106,
-        "indexC": 558
+        "indexA": 768,
+        "indexB": 175,
+        "indexC": 580
     },
     {
         "id": 33,
         "date": "10/08/2024",
-        "indexA": 805,
-        "indexB": 170,
-        "indexC": 433
+        "indexA": 477,
+        "indexB": 121,
+        "indexC": 432
     },
     {
         "id": 34,
         "date": "10/09/2024",
-        "indexA": 619,
-        "indexB": 189,
-        "indexC": 443
+        "indexA": 840,
+        "indexB": 102,
+        "indexC": 403
     },
     {
         "id": 35,
         "date": "10/10/2024",
-        "indexA": 918,
-        "indexB": 112,
-        "indexC": 521
+        "indexA": 591,
+        "indexB": 104,
+        "indexC": 479
     },
     {
         "id": 36,
         "date": "10/11/2024",
-        "indexA": 908,
-        "indexB": 196,
-        "indexC": 409
+        "indexA": 810,
+        "indexB": 148,
+        "indexC": 454
     },
     {
         "id": 37,
         "date": "10/12/2024",
-        "indexA": 879,
-        "indexB": 101,
-        "indexC": 526
+        "indexA": 461,
+        "indexB": 156,
+        "indexC": 544
     },
     {
         "id": 38,
         "date": "10/13/2024",
-        "indexA": 460,
-        "indexB": 184,
-        "indexC": 435
+        "indexA": 732,
+        "indexB": 150,
+        "indexC": 451
     },
     {
         "id": 39,
         "date": "10/14/2024",
-        "indexA": 765,
-        "indexB": 177,
-        "indexC": 414
+        "indexA": 563,
+        "indexB": 109,
+        "indexC": 415
     },
     {
         "id": 40,
         "date": "10/15/2024",
-        "indexA": 854,
-        "indexB": 107,
-        "indexC": 404
+        "indexA": 635,
+        "indexB": 184,
+        "indexC": 433
     },
     {
         "id": 41,
         "date": "10/16/2024",
-        "indexA": 345,
-        "indexB": 134,
-        "indexC": 529
+        "indexA": 990,
+        "indexB": 137,
+        "indexC": 502
     },
     {
         "id": 42,
         "date": "10/17/2024",
-        "indexA": 411,
-        "indexB": 152,
-        "indexC": 569
+        "indexA": 583,
+        "indexB": 156,
+        "indexC": 416
     },
     {
         "id": 43,
         "date": "10/18/2024",
-        "indexA": 829,
-        "indexB": 172,
-        "indexC": 556
+        "indexA": 625,
+        "indexB": 198,
+        "indexC": 581
     },
     {
         "id": 44,
         "date": "10/19/2024",
-        "indexA": 430,
-        "indexB": 107,
-        "indexC": 453
+        "indexA": 391,
+        "indexB": 187,
+        "indexC": 455
     },
     {
         "id": 45,
         "date": "10/20/2024",
-        "indexA": 916,
-        "indexB": 186,
-        "indexC": 581
+        "indexA": 368,
+        "indexB": 175,
+        "indexC": 571
     },
     {
         "id": 46,
         "date": "10/21/2024",
-        "indexA": 922,
-        "indexB": 145,
-        "indexC": 499
+        "indexA": 448,
+        "indexB": 139,
+        "indexC": 487
     },
     {
         "id": 47,
         "date": "10/22/2024",
-        "indexA": 308,
-        "indexB": 131,
-        "indexC": 506
+        "indexA": 872,
+        "indexB": 114,
+        "indexC": 585
     },
     {
         "id": 48,
         "date": "10/23/2024",
-        "indexA": 666,
-        "indexB": 100,
-        "indexC": 463
+        "indexA": 466,
+        "indexB": 130,
+        "indexC": 516
     },
     {
         "id": 49,
         "date": "10/24/2024",
-        "indexA": 660,
-        "indexB": 188,
-        "indexC": 462
-    },
-    {
-        "id": 50,
-        "date": "10/25/2024",
-        "indexA": 447,
-        "indexB": 183,
-        "indexC": 454
+        "indexA": 952,
+        "indexB": 161,
+        "indexC": 558
     }
 ]

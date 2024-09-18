@@ -119,6 +119,7 @@ function PaginationLogic({
     const firstIndex = 1;
     const lastIndex = totalPageCount;
 
+
     const hasLeftSibling = leftSiblingIndex > 2;
     const hasRightSibling = rightSiblingIndex < totalPageCount - 2;
 
