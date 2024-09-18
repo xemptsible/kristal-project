@@ -14,7 +14,7 @@ import {
 export function ChartViewComponent({ data }: { data: IIndexData[] }) {
   const { selectedItem } = useDropdownIndexContext();
 
-  function handler(item: string) {
+  function lineHandler() {
     switch (selectedItem) {
       case "Danh mục A":
         return (
@@ -89,12 +89,8 @@ export function ChartViewComponent({ data }: { data: IIndexData[] }) {
         <YAxis interval={"preserveStartEnd"} padding={{ top: 0, bottom: 0 }} />
         <Tooltip />
         <Legend />
-        {handler(selectedItem)}
+        {lineHandler()}
       </LineChart>
     </ResponsiveContainer>
   );
-}
-
-function EverythingChart() {
-  return <></>;
 }
