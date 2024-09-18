@@ -87,7 +87,9 @@ export function ChartViewComponent({ data }: { data: IIndexData[] }) {
         <CartesianGrid strokeDasharray="10" />
         <XAxis dataKey="date" />
         <YAxis interval={"preserveStartEnd"} padding={{ top: 0, bottom: 0 }} />
-        <Tooltip />
+        <Tooltip
+          contentStyle={{ backgroundColor: "black" }}
+        />
         <Legend />
         {lineHandler()}
       </LineChart>
