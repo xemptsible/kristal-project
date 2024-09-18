@@ -44,7 +44,7 @@ export function ChangesComponent() {
       );
     });
 
-    const actualValue = [
+    const percentageValues = [
       {
         name: "Danh mục A",
         percent: percentageDiff(
@@ -68,9 +68,7 @@ export function ChangesComponent() {
       },
     ];
 
-    console.log(actualValue);
-
-    return actualValue;
+    return percentageValues;
   }, [dateRange]);
 
   return (

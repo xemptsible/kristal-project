@@ -1,7 +1,5 @@
 import { ReactNode, useMemo, useState } from "react";
-import {
-  useDropdownIndexContext,
-} from "@/app/context/app-context";
+import { useDropdownIndexContext } from "@/app/context/app-context";
 import { Pagination } from "@/components/pagination";
 import { IIndexData } from "@/assets/interfaces";
 
@@ -16,7 +14,7 @@ export function TableViewComponent({ data }: { data: IIndexData[] }) {
 
     // Reset page count to 1 if total data is only worth 1 page or is over the new total page count
     // Reset số trang về trang đầu tiên nếu dữ liệu chỉ đủ cho 1 trang hoặc hơn số trang mới
-    const isOverPageCount = currentPage > data.length / defaultPageSize;
+    const isOverPageCount = currentPage > data.length / defaultPageSize + 1;
 
     if (data.length <= defaultPageSize || isOverPageCount) {
       setCurrentPage(1);
