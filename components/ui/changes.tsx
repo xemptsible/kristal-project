@@ -48,22 +48,22 @@ export function ChangesComponent() {
       {
         name: "Danh mục A",
         percent: percentageDiff(
-          filteredData[0]!.indexA,
-          filteredData[1]!.indexA
+          filteredData[0]?.indexA,
+          filteredData[1]?.indexA
         ),
       },
       {
         name: "Danh mục B",
         percent: percentageDiff(
-          filteredData[0]!.indexB,
-          filteredData[1]!.indexB
+          filteredData[0]?.indexB,
+          filteredData[1]?.indexB
         ),
       },
       {
         name: "Danh mục C",
         percent: percentageDiff(
-          filteredData[0]!.indexC,
-          filteredData[1]!.indexC
+          filteredData[0]?.indexC,
+          filteredData[1]?.indexC
         ),
       },
     ];
